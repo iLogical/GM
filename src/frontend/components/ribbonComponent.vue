@@ -1,23 +1,26 @@
 <template>
   <div id="ribbon-component">
-    <div id="ribbon-component-ribbon-buttons">
-      <div id="ribbon-component-ribbon-minimize" class="icon" @click="minimize"><i class="fa fa-window-minimize fa-fw" aria-hidden="true"></i></div>
-      <div id="ribbon-component-ribbon-maximize" class="icon" @click="maximize"><i class="fa fa-window-maximize fa-fw" aria-hidden="true"></i></div>
-      <div id="ribbon-component-ribbon-close" class="icon" @click="quit"><i class="fa fa-times fa-fw" aria-hidden="true"></i></div>
+    <div id="buttons">
+      <div id="minimize" class="icon" @click="minimize"><i class="fa fa-window-minimize fa-fw" aria-hidden="true"></i></div>
+      <div id="maximize" class="icon" @click="maximize"><i class="fa fa-window-maximize fa-fw" aria-hidden="true"></i></div>
+      <div id="close" class="icon" @click="quit"><i class="fa fa-times fa-fw" aria-hidden="true"></i></div>
     </div>
   </div>
 </template>
 <style lang="scss">
   @import '../sass/_colours.scss';
-
   #ribbon-component {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     -webkit-app-region: drag;
     display: flex;    
     height: 25px;
     background-color: $background-color-darker;
     border-bottom: 1px solid $border-color;
     cursor: default;
-    #ribbon-component-ribbon-buttons {
+    #buttons {
       -webkit-app-region: no-drag;
       display: flex;
       position: absolute;
@@ -25,7 +28,7 @@
       top: 0;
       width: 75px;
       height: 25px;
-      #ribbon-component-ribbon-minimize, #ribbon-component-ribbon-maximize, #ribbon-component-ribbon-close {        
+      #minimize, #maximize, #close {        
         text-align: center;
         width: 25px;
         height: 25px;
@@ -34,7 +37,7 @@
           background-color: $background-color-lighter;
         }
       }
-      #ribbon-component-ribbon-close {
+      #close {
         &:hover {
           background-color: $danger;
         }

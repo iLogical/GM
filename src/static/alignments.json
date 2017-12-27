@@ -1,0 +1,8 @@
+{
+  "lawful_good": { "name": "Lawful Good", "alias": "LG" },
+  "neutral_good": { "name": "Neutral Good", "alias": "NG" },
+  "chaotic_good": { "name": "Chaotic Good", "alias": "CG" },
+  "lawful_neutral": { "name": "Lawful Neutral", "alias": "LN" },
+  "neutral": { "name": "Neutral", "alias": "N" },
+  "chaotic_neutral": { "name": "Chaotic Neutral", "alias": "CN" }
+}

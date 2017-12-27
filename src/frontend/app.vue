@@ -1,26 +1,31 @@
 <template>
   <div id="app">
-    <ribbon-component></ribbon-component>
-    <div id="app-main">
+    <div id="main">
+      <character-component></character-component>
     </div>
+    <ribbon-component></ribbon-component>
   </div>
 </template>
 <style lang="scss">
   @import './sass/_colours.scss';
   #app {
-    #app-main {
-      position: absolute;
-      top: calc(2vh + 25px);
-      bottom: 2vh;
-      left: 2vh;
-      right: 2vh;
-      background-color: $background-color-lighter;
+    #main {   
+      position: relative; 
+      top: 25px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      @media (min-width: 960px) {
+        max-width: 75%;
+      }
     }
   }
 </style>
 <script>
   import Vuex from 'vuex'
   import RibbonComponent from './components/ribbonComponent.vue'
+  import CharacterComponent from './components/characterComponent.vue'
 
   export default {
     data () {
@@ -34,7 +39,8 @@
       this.loadFromStorage()
     },
     components: {      
-      RibbonComponent
+      RibbonComponent,
+      CharacterComponent
     }
   }
 </script>

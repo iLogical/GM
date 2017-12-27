@@ -1,3 +1,5 @@
+import CharacterModule from './characterModule'
+
 export default {
   namespaced: true,
   strict: process.env.NODE_ENV !== 'production',
@@ -8,5 +10,6 @@ export default {
     }
   },
   modules: {
+    CharacterModule
   }
 }
