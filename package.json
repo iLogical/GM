@@ -1,0 +1,40 @@
+{
+  "name": "electron-vue-template",
+  "productName": "electron-vue-template",
+  "version": "0.0.0",
+  "private": true,
+  "main": "app/main.js",
+  "scripts": {
+    "prestart": "webpack --define process.env.NODE_ENV=\"'development'\"",
+    "start": "electron .",
+    "watch": "webpack --watch",
+    "test": "karma start karma.conf.js",
+    "pretest": "standard --plugin html \"./src/**/*.{js,vue}\""
+  },
+  "dependencies": {
+    "electron-localshortcut": "^2.0.2",
+    "electron-windows-notifications": "^1.1.16",
+    "vue": "^2.3.0",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-env": "^1.4.0",
+    "bulma": "^0.6.1",
+    "css-loader": "^0.28.0",
+    "electron": "^1.6.6",
+    "file-loader": "^0.11.1",
+    "inject-loader": "^3.0.0",
+    "json-loader": "^0.5.4",
+    "node-sass": "^4.5.2",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.18.2",
+    "vue-loader": "^12.0.2",
+    "vue-style-loader": "^3.0.1",
+    "vue-template-compiler": "^2.3.0",
+    "webpack": "^v3.3.0",
+    "webpack-node-externals": "^1.5.4"
+  }
+}
