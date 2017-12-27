@@ -1,38 +1,16 @@
 <template>
   <div id="character-component">
-    <div id="a" class="section">
-      <h5>Name</h5>
-    </div>
-    <div id="b" class="section">      
-      <h5>Ability Scores</h5>
-    </div>
-    <div id="c" class="section">
-      <h5>Racial Traits</h5>
-    </div>
-    <div id="d" class="section">      
-      <h5>Skills</h5>
-    </div>
-    <div id="e" class="section">
-      <h5>Armor And Weapons</h5>
-    </div>
-    <div id="f" class="section">
-      <h5>Class Features</h5>
-    </div>
-    <div id="g" class="section">
-      <h5>Weapons And Attacks</h5>
-    </div>
-    <div id="h" class="section">
-      <h5>Armor And Armor Class</h5>
-    </div>
-    <div id="i" class="section">
-      <h5>Feats</h5>
-    </div>
-    <div id="j" class="section">
-      <h5>Equipment</h5>
-    </div>
-    <div id="k" class="section">
-      <h5>Prepared Skills</h5>
-    </div>
+    <name-component></name-component>
+    <ability-component></ability-component>
+    <racial-traits-component></racial-traits-component>
+    <skills-component></skills-component>
+    <armor-and-weapon-proficiencies-component></armor-and-weapon-proficiencies-component>
+    <class-features-component></class-features-component>
+    <weapons-and-attacks-component></weapons-and-attacks-component>
+    <armor-and-armor-class-component></armor-and-armor-class-component>
+    <feats-component></feats-component>
+    <equipment-component></equipment-component>
+    <spells-component></spells-component>
     <div id="l" class="section">
       <h5>Character Portrait</h5>
     </div>
@@ -68,53 +46,21 @@
       border-radius: 5px;
       padding: 10px;
     }
-    #a {
-      grid-column: 1 / 3;
-    }
-    #b {
-      grid-column: 1;
-      grid-row: 2 / 5;
-    }
-    #c {
-      grid-column: 1;
-      grid-row: 5 / 7;
-    }
-    #d {
-      grid-column: 1;
-      grid-row: 7 / 18;
-    }
-    #e {
-      grid-column: 1;
-      grid-row: 18 / 20;
-    }
-    #f {
-      grid-column: 2;
-      grid-row: 2 / 7;
-    }
-    #g {
-      grid-column: 2;
-      grid-row: 7 / 12;
-    }
-    #h {
-      grid-column: 2;
-      grid-row: 12 / 14;
-    }
-    #i {
-      grid-column: 2;
-      grid-row: 14 / 16;
-    }    
-    #j {
-      grid-column: 1;
-      grid-row: 20 / 26;
-    }    
-    #k {
-      grid-column: 2;
-      grid-row: 16 / 26;
-    }
   }
 </style>
 <script>
   import Vuex from 'vuex'
+  import NameComponent from './characterSheet/name.vue'
+  import AbilityComponent from './characterSheet/ability.vue'
+  import RacialTraitsComponent from './characterSheet/racialTraits.vue'
+  import SkillsComponent from './characterSheet/skills.vue'
+  import ArmorAndWeaponProficienciesComponent from './characterSheet/armorAndWeaponProficiencies.vue'
+  import ClassFeaturesComponent from './characterSheet/classFeatures.vue'
+  import WeaponsAndAttacksComponent from './characterSheet/weaponsAndAttacks.vue'
+  import ArmorAndArmorClassComponent from './characterSheet/armorAndArmorClass.vue'
+  import FeatsComponent from './characterSheet/feats.vue'
+  import EquipmentComponent from './characterSheet/equipment.vue'
+  import SpellsComponent from './characterSheet/spells.vue'
 
   export default {
     data () {
@@ -123,6 +69,19 @@
     },
     methods: {
       ...Vuex.mapActions('CharacterModule', [''])
+    },
+    components: {
+      NameComponent,
+      AbilityComponent,
+      RacialTraitsComponent,
+      SkillsComponent,
+      ArmorAndWeaponProficienciesComponent,
+      ClassFeaturesComponent,
+      WeaponsAndAttacksComponent,
+      ArmorAndArmorClassComponent,
+      FeatsComponent,
+      EquipmentComponent,
+      SpellsComponent
     }
   }
 </script>
