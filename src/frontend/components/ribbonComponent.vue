@@ -17,8 +17,8 @@
     -webkit-app-region: drag;
     display: flex;    
     height: 25px;
-    background-color: $background-color-darker;
-    border-bottom: 1px solid $border-color;
+    background-color: $colour-background-darker;
+    border-bottom: 1px solid $colour-border;
     cursor: default;
     #buttons {
       -webkit-app-region: no-drag;
@@ -34,12 +34,12 @@
         height: 25px;
         line-height: 25px;
         &:hover {
-          background-color: $background-color-lighter;
+          background-color: $colour-background-lighter;
         }
       }
       #close {
         &:hover {
-          background-color: $danger;
+          background-color: $colour-danger;
         }
       }
     }

@@ -4,8 +4,8 @@
 html, body {
   overflow: auto;
   font-family: Tahoma, serif;
-  background-color: $background-color;
-  color: $color;
+  background-color: $colour-background;
+  color: $colour-text;
   padding: 0;
   margin: 0;
   width: 100%;
@@ -18,21 +18,21 @@ html, body {
 }
 
 ::-webkit-scrollbar-track {
-  background: $background-color-darker;
+  background: $colour-background-darker;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $color-active;
+  background: $colour-accent;
 }
 
 input, select, button {
   border: 2px solid transparent;
-  border-bottom: 2px solid $background-color;  
+  border-bottom: 2px solid $colour-background;  
   background-color: transparent;
   padding: 5px 15px;
-  color: $color;  
+  color: $colour-text;  
   &:disabled {
-    background-color: $background-color;    
+    background-color: $colour-background;    
     border-bottom: 2px solid transparent;  
     cursor: not-allowed;
   }
@@ -41,15 +41,20 @@ input, select, button {
   }
 }
 
-button {  
+button, input[type=button] {  
   cursor: pointer;
+  border: none;
   &:hover:enabled { 
-    color: $background-color;
-    background-color: $color-active;
+    color: $colour-background;
+    background-color: $colour-accent;
   }
 }
 
 select {
   padding: 5px 5px;
   outline: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $colour-accent;
 }

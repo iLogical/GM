@@ -1,13 +1,22 @@
-$color: #ccc;
-$color-active: #FFC107;
-$color-hover: #fff;
-$background-color: #2e3337;
-$background-color-hover: rgba(0, 0, 0, 0.15);
-$background-color-darker: #222629;
-$background-color-lighter: #383b41;
-$border-color-light: #555;
-$border-color: darken($background-color, 20%);
-$box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+$hover-modifier: 2.5%;
 
-$danger: #EF5350;
-$success: #66BB6A;
+$colour-text: #ccc;
+$colour-text-hover: lighten($colour-text, $hover-modifier);
+
+$colour-accent: #A7A7FF;
+
+$colour-background: #2e3337;
+$colour-background-hover: darken($colour-background, $hover-modifier);
+$colour-background-darker: #222629;
+$colour-background-darker-hover: darken($colour-background-darker, $hover-modifier);
+$colour-background-lighter: #383b41;
+$colour-background-lighter-hover: darken($colour-background-lighter, $hover-modifier);
+
+$border-darkness: 5%;
+
+$colour-border: darken($colour-background, $border-darkness);
+$colour-border-darker: darken($colour-background-darker, $border-darkness);
+$colour-border-lighter: darken($colour-background-lighter, $border-darkness);
+
+$colour-danger: #EF5350;
+$colour-success: #66BB6A;

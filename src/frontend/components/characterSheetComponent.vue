@@ -1,6 +1,6 @@
 <template>
   <div id="character-component">
-    <name-component></name-component>
+    <name-component :character="currentCharacter"></name-component>
     <ability-component></ability-component>
     <racial-traits-component></racial-traits-component>
     <skills-component></skills-component>
@@ -42,7 +42,7 @@
         margin-top: 0;
       }
       @include card-1;
-      background-color: $background-color-lighter;
+      background-color: $colour-background-lighter;
       border-radius: 5px;
       padding: 10px;
     }
@@ -63,12 +63,8 @@
   import SpellsComponent from './characterSheet/spells.vue'
 
   export default {
-    data () {
-      return {
-      }
-    },
-    methods: {
-      ...Vuex.mapActions('CharacterModule', [''])
+    computed: {
+      ...Vuex.mapGetters(['currentCharacter'])
     },
     components: {
       NameComponent,

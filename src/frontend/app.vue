@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <div id="main">
-      <character-component></character-component>
+      <button @click="changeCurrentScreen('splash')">Home</button>
+      <component :is="currentScreenComponent"></component>
     </div>
     <ribbon-component></ribbon-component>
   </div>
@@ -25,22 +26,36 @@
 <script>
   import Vuex from 'vuex'
   import RibbonComponent from './components/ribbonComponent.vue'
-  import CharacterComponent from './components/characterComponent.vue'
+  import SplashScreenComponent from './components/splashScreenComponent.vue'
+  import CharacterSheetComponent from './components/characterSheetComponent.vue'
 
   export default {
     data () {
       return {
       }
     },
+    computed: {
+      currentScreenComponent () {
+        switch (this.currentScreen) {
+          case 'splash':
+            return 'SplashScreenComponent'
+          case 'character':
+            return 'CharacterSheetComponent'
+        }
+      },
+      ...Vuex.mapState(['currentScreen']),
+      ...Vuex.mapState('CharacterModule', ['characters']),
+    },
     methods: {
-      ...Vuex.mapActions(['loadFromStorage'])
+      ...Vuex.mapActions(['loadFromStorage', 'changeCurrentScreen'])
     },
     async mounted () {
       this.loadFromStorage()
     },
     components: {      
       RibbonComponent,
-      CharacterComponent
+      SplashScreenComponent,
+      CharacterSheetComponent
     }
   }
 </script>

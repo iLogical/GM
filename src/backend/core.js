@@ -1,4 +1,6 @@
 import { app, BrowserWindow, Tray, Menu } from 'electron'
+import vueDevtools from 'vue-devtools'
+import electronDebug from 'electron-debug'
 import path from 'path'
 import url from 'url'
 import electronLocalshortcut from 'electron-localshortcut'
@@ -52,6 +54,10 @@ function createWindow () {
 
 export function init () {
   app.on('ready', () => {
+    if (process.env.NODE_ENV !== 'production') {
+      vueDevtools.install()
+      electronDebug({showDevTools: false})
+    }
     createWindow()
   })
 
