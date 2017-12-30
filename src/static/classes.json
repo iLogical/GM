@@ -1,6 +1,6 @@
 {
-  "fighter": {},
-  "cleric": {},
-  "rogue": {},
-  "wizard": {}
+  "fighter": { "name": "Fighter" },
+  "cleric": { "name": "Cleric" },
+  "rogue": { "name": "Rogue" },
+  "wizard": { "name": "Wizard" }
 }

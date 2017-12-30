@@ -1,19 +1,22 @@
 $hover-modifier: 2.5%;
 
-$colour-text: #ccc;
+$colour-text: #8f99a1;
 $colour-text-hover: lighten($colour-text, $hover-modifier);
+$colour-text-darker: #88939c;
+$colour-text-darker-hover: lighten($colour-text-darker, $hover-modifier);
+$colour-text-lighter: #969ba4;
+$colour-text-lighter-hover: lighten($colour-text-lighter, $hover-modifier);
 
-$colour-accent: #A7A7FF;
+$colour-accent: #c4c4ff;
 
 $colour-background: #2e3337;
-$colour-background-hover: darken($colour-background, $hover-modifier);
+$colour-background-hover: lighten($colour-background, $hover-modifier);
 $colour-background-darker: #222629;
-$colour-background-darker-hover: darken($colour-background-darker, $hover-modifier);
+$colour-background-darker-hover: lighten($colour-background-darker, $hover-modifier);
 $colour-background-lighter: #383b41;
-$colour-background-lighter-hover: darken($colour-background-lighter, $hover-modifier);
+$colour-background-lighter-hover: lighten($colour-background-lighter, $hover-modifier);
 
 $border-darkness: 5%;
-
 $colour-border: darken($colour-background, $border-darkness);
 $colour-border-darker: darken($colour-background-darker, $border-darkness);
 $colour-border-lighter: darken($colour-background-lighter, $border-darkness);

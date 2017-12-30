@@ -1,5 +1,5 @@
 {
-  "dwarf": {},
-  "elf": {},
-  "human": {}
+  "dwarf": { "name": "Dwarf" },
+  "elf": { "name": "Elf" },
+  "human": { "name": "Human" }
 }

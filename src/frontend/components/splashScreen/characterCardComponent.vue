@@ -5,14 +5,21 @@
         {{character.id}}
       </div>
       <button id="remove" @click.stop="onRemoveClicked">
-        <i class="fa fa-trash fa-fw" aria-hidden="true"></i>
+        <i class="fa fa-times fa-fw" aria-hidden="true"></i>
       </button>
     </div>
     <br>
     <br>
-    {{character.name}}
+    Name: {{character.name}}
     <br>
     <br>
+    Level: {{character.level}}
+    <br>
+    <br>
+    Race: {{raceName}}
+    <br>
+    <br>
+    Class: {{className}}
   </div>
 </template>
 <style lang="scss">
@@ -26,18 +33,17 @@
       justify-content: space-between;
       #characterId {
         width: 100%;
-        color: $colour-background-darker;
+        color: $colour-text-lighter;
         font-size: 10px;
         font-weight: bolder;
-        line-height: 25px;        
-        text-shadow: 1px 1px transparentize($colour-text, 0.75);
+        line-height: 25px;
         &:hover {
-          color: transparentize($colour-text, 0.75);
-          text-shadow: 1px 1px $colour-background-darker;
+          color: $colour-text-lighter-hover;
           cursor: pointer;
         }
       }
       #remove {
+        color: $colour-text-lighter;
         padding: 5px;
         &:hover {
           background-color: transparent;
@@ -49,12 +55,30 @@
 </style>
 <script>
   import Vuex from 'vuex'
+  import classes from '../../../static/classes.json'
+  import races from '../../../static/races.json'
   
   export default {
     props: {
       character: {
         type: Object,
         required: true
+      }
+    },
+    data () {
+      return {
+        classes,
+        races
+      }
+    },
+    computed: {
+      className () {
+        const c =  this.classes[this.character.class]
+        return c ? c.name : ''
+      },
+      raceName () {
+        const r = this.races[this.character.race]
+        return r ? r.name : ''
       }
     },
     methods: {

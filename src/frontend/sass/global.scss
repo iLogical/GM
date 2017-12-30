@@ -1,9 +1,11 @@
 @import './font-awesome/css/fa-svg-with-js.css';
 @import "_colours";
 
+$font: 'Arial', cursive;
+
 html, body {
   overflow: auto;
-  font-family: Tahoma, serif;
+  font-family: $font;  
   background-color: $colour-background;
   color: $colour-text;
   padding: 0;
@@ -26,14 +28,13 @@ html, body {
 }
 
 input, select, button {
-  border: 2px solid transparent;
-  border-bottom: 2px solid $colour-background;  
+  font-family: $font;
+  border: 1px solid transparent;
+  border-bottom: 1px solid $colour-border-lighter;  
   background-color: transparent;
   padding: 5px 15px;
   color: $colour-text;  
   &:disabled {
-    background-color: $colour-background;    
-    border-bottom: 2px solid transparent;  
     cursor: not-allowed;
   }
   &:focus {
@@ -48,6 +49,10 @@ button, input[type=button] {
     color: $colour-background;
     background-color: $colour-accent;
   }
+}
+
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }
 
 select {

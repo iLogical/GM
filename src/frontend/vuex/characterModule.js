@@ -1,22 +1,5 @@
 import localforage from 'localforage'
-
-const characterTemplate = () => {
-  const id = Date.now()
-  return {
-    id: id,
-    name: '',
-    race: '',
-    class: '',
-    abilities: {
-      strength: 0,
-      dexterity: 0,
-      constitution: 0,
-      intelligence: 0,
-      wisdom: 0,
-      charisma: 0
-    }
-  }
-}
+import templates from '../../static/templates.js'
 
 export default {
   namespaced: true,
@@ -26,10 +9,13 @@ export default {
   },
   mutations: {
     CREATE_CHARACTER (state) {
-      state.characters.push(characterTemplate())
+      state.characters.push(templates.character())
     },
     UPDATE_CHARACTER (state, {character, changeDelta}) {
       Object.assign(character, changeDelta)
+    },
+    UPDATE_CHARACTER_ABILITIES (state, {character, changeDelta}) {
+      Object.assign(character.abilities, changeDelta)
     },
     REMOVE_CHARACTER (state, {character}) {
       const characterIndex = state.characters.indexOf(character)
@@ -38,7 +24,7 @@ export default {
       }
     },
     LOAD_CHARACTERS (state, {characters}) {
-      state.characters = characters
+      state.characters = characters || []
     }
   },
   actions: {
@@ -48,6 +34,10 @@ export default {
     },
     async updateCharacter ({commit, dispatch}, {character, changeDelta}) {
       commit('UPDATE_CHARACTER', {character, changeDelta})
+      dispatch('saveCharacters')
+    },
+    async updateCharacterAbilities ({commit, dispatch}, {character, changeDelta}) {
+      commit('UPDATE_CHARACTER_ABILITIES', {character, changeDelta})
       dispatch('saveCharacters')
     },
     async removeCharacter ({commit, dispatch}, character) {

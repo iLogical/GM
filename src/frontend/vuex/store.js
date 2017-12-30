@@ -1,3 +1,6 @@
+import alignments from '../../static/alignments.json'
+import classes from '../../static/classes.json'
+import races from '../../static/races.json'
 import CharacterModule from './characterModule'
 
 export default {

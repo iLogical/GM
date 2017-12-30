@@ -1,16 +1,16 @@
 <template>
   <div id="character-component">
     <name-component :character="currentCharacter"></name-component>
-    <ability-component></ability-component>
-    <racial-traits-component></racial-traits-component>
-    <skills-component></skills-component>
-    <armor-and-weapon-proficiencies-component></armor-and-weapon-proficiencies-component>
-    <class-features-component></class-features-component>
-    <weapons-and-attacks-component></weapons-and-attacks-component>
-    <armor-and-armor-class-component></armor-and-armor-class-component>
-    <feats-component></feats-component>
-    <equipment-component></equipment-component>
-    <spells-component></spells-component>
+    <ability-component :character="currentCharacter"></ability-component>
+    <racial-traits-component :character="currentCharacter"></racial-traits-component>
+    <skills-component :character="currentCharacter"></skills-component>
+    <armor-and-weapon-proficiencies-component :character="currentCharacter"></armor-and-weapon-proficiencies-component>
+    <class-features-component :character="currentCharacter"></class-features-component>
+    <weapons-and-attacks-component :character="currentCharacter"></weapons-and-attacks-component>
+    <armor-and-armor-class-component :character="currentCharacter"></armor-and-armor-class-component>
+    <feats-component :character="currentCharacter"></feats-component>
+    <equipment-component :character="currentCharacter"></equipment-component>
+    <spells-component :character="currentCharacter"></spells-component>
     <div id="l" class="section">
       <h5>Character Portrait</h5>
     </div>
@@ -40,11 +40,16 @@
     .section {
       h5 {
         margin-top: 0;
+        color: $colour-text-lighter;
       }
       @include card-1;
       background-color: $colour-background-lighter;
       border-radius: 5px;
       padding: 10px;
+      input, select {
+        color: $colour-text-lighter;
+        background-color: $colour-background-lighter;
+      }
     }
   }
 </style>
@@ -64,7 +69,7 @@
 
   export default {
     computed: {
-      ...Vuex.mapGetters(['currentCharacter'])
+      ...Vuex.mapGetters(['currentCharacter', 'currentCharacterClass', 'currentCharacterRace'])
     },
     components: {
       NameComponent,

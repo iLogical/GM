@@ -4,7 +4,7 @@
       <character-card-component :character="character"></character-card-component>
     </div>
     <div id="add" class="section" @click="createCharacter">
-      <i class="fa fa-plus fa-fw" aria-hidden="true"></i>
+      <i class="fa fa-plus-square fa-fw" aria-hidden="true"></i>
     </div>
   </div>
 </template>
@@ -20,14 +20,19 @@
     .section {
       h5 {
         margin-top: 0;
-      }
+      } 
       @include card-1;
       background-color: $colour-background-lighter;
       border-radius: 5px;
       padding: 10px;
+      transition: background-color 0.1s ease-in-out;
+      transition: box-shadow 0.1s ease-in-out;
+      transition: transform 0.1s ease-in-out;
       &:hover {
+        @include card-2;
         background-color: $colour-background-lighter-hover;
         color: $colour-text-hover;
+        transform: scale(1.01, 1.01);         
       }
       &#add {        
         svg {
@@ -35,10 +40,12 @@
           display: block;
           margin: auto;
           font-size: 100px;
-          color: $colour-background-darker;
+          color: lighten($colour-background-lighter, 3%);
         }
         &:hover {
-          color: $colour-background-darker-hover;
+          svg {            
+            color: lighten($colour-background-lighter-hover, 3%);
+          }
         }
       }
     }
