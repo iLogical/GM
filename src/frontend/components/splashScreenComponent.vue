@@ -3,48 +3,43 @@
     <div class="section" v-for="character in characters" :key="'character_'+character.id">
       <character-card-component :character="character"></character-card-component>
     </div>
-    <div id="add" class="section" @click="createCharacter">
-      <i class="fa fa-plus-square fa-fw" aria-hidden="true"></i>
+    <div id="add" class="section" @click="createCharacter" v-html="addIcon">
     </div>
   </div>
 </template>
 <style lang="scss">
   @import '../sass/_colours.scss';
   @import '../sass/_cards.scss';
-  #splash-screen-component {  
-    margin: 10px;  
+  #splash-screen-component {
+    margin: 0.5em;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));    
-    grid-auto-rows: 300px;
-    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(12.5em, 1fr));
+    grid-auto-rows: 18.75em;
+    grid-gap: 0.5em;
     .section {
-      h5 {
-        margin-top: 0;
-      } 
-      @include card-1;
+      @include card(1);
       background-color: $colour-background-lighter;
-      border-radius: 5px;
-      padding: 10px;
-      transition: background-color 0.1s ease-in-out;
-      transition: box-shadow 0.1s ease-in-out;
-      transition: transform 0.1s ease-in-out;
+      padding: 0.5em;
+      transition: background-color 0.5s ease-in-out;
+      transition: box-shadow 0.5s ease-in-out;
       &:hover {
-        @include card-2;
-        background-color: $colour-background-lighter-hover;
+        @include card(2);
+        background-color: $colour-background-hover;
         color: $colour-text-hover;
-        transform: scale(1.01, 1.01);         
+        cursor: pointer;
       }
-      &#add {        
+      &#add {
         svg {
           height: 100%;
+          width: 100%;
           display: block;
           margin: auto;
-          font-size: 100px;
-          color: lighten($colour-background-lighter, 3%);
         }
         &:hover {
-          svg {            
-            color: lighten($colour-background-lighter-hover, 3%);
+          svg {
+            path {
+              fill: $colour-text-hover;
+            }
           }
         }
       }
@@ -54,8 +49,14 @@
 <script>
   import Vuex from 'vuex'
   import CharacterCardComponent from './splashScreen/characterCardComponent.vue'
+  import addIcon from '../../static/icons/SVG/user-plus.svg'
 
   export default {
+    data () {
+      return {
+        addIcon
+      }
+    },
     computed: {
       ...Vuex.mapState('CharacterModule', ['characters'])
     },

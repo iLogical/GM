@@ -6,8 +6,6 @@
 <style lang="scss">
   @import '../../sass/_colours.scss';
   #armor-and-armor-class {
-    grid-column: 2;
-    grid-row: 12 / 14;
   }
 </style>
 <script>

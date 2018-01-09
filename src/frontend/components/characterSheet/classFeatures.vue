@@ -6,8 +6,6 @@
 <style lang="scss">
   @import '../../sass/_colours.scss';
   #class-features {
-    grid-column: 2;
-    grid-row: 2 / 7;
   }
 </style>
 <script>

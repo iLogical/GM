@@ -6,8 +6,6 @@
 <style lang="scss">
   @import '../../sass/_colours.scss';
   #armor-and-weapon-proficiencies {
-    grid-column: 1;
-    grid-row: 18 / 20;
   }
 </style>
 <script>

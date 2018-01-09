@@ -5,16 +5,17 @@
   "private": true,
   "main": "app/main.js",
   "scripts": {
-    "prestart": "webpack --define process.env.NODE_ENV=\"'development'\"",
     "start": "electron .",
-    "watch": "webpack --watch",
+    "webpack": "webpack -d",
     "test": "karma start karma.conf.js",
     "pretest": "standard --plugin html \"./src/**/*.{js,vue}\""
   },
   "dependencies": {
     "electron-localshortcut": "^2.0.2",
     "localforage": "^1.5.5",
+    "svg-inline-loader": "^0.8.0",
     "vue": "^2.3.0",
+    "vue-masonry": "^0.10.16",
     "vuex": "^3.0.1"
   },
   "devDependencies": {

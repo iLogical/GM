@@ -9,14 +9,14 @@ export let mainWindow
 
 function createWindow () {
 
-  mainWindow = new BrowserWindow({    
+  mainWindow = new BrowserWindow({
     frame: false,
     webPreferences: {
       nodeIntegrationInWorker: true
     }
   })
   mainWindow.loadURL(url.format({ pathname: path.join(__dirname, 'index.html') }))
-  
+
   mainWindow.on('closed', () => {
     mainWindow = null
   })
@@ -50,7 +50,15 @@ function createWindow () {
   electronLocalshortcut.register(mainWindow, 'CmdOrCtrl+E', () => {
     mainWindow.webContents.send('alfred', {})
   })
-};
+
+  mainWindow.on('maximize', () => {
+    mainWindow.webContents.send('maximized', true)
+  })
+
+  mainWindow.on('unmaximize', () => {
+    mainWindow.webContents.send('maximized', false)
+  })
+}
 
 export function init () {
   app.on('ready', () => {

@@ -6,8 +6,6 @@
 <style lang="scss">
   @import '../../sass/_colours.scss';
   #equipment {
-    grid-column: 1;
-    grid-row: 20 / 26;
   }
 </style>
 <script>

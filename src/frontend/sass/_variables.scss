@@ -1,0 +1,41 @@
+$font-x-small-family: 'Verdana', sans-serif;
+$font-x-small-size: 0.625em;
+
+$font-small-family: 'Verdana', sans-serif;
+$font-small-size: 0.8em;
+
+$font-medium-family: 'Arial', sans-serif;
+$font-medium-size: 1em;
+
+$font-large-family: 'Arial', sans-serif;
+$font-large-size: 1.125em;
+
+$font-x-large-family: 'Arial', sans-serif;
+$font-x-large-size: 1.5em;
+
+$font-xx-large-family: 'Arial', sans-serif;
+$font-xx-large-size: 2em;
+
+@mixin font($size) {
+  @if $size == 'x-small' {
+    font-family: $font-x-small-family;
+    font-size: $font-x-small-size;
+  } @else if $size == 'small' {
+    font-family: $font-small-family;
+    font-size: $font-small-size;
+  } @else if $size == 'medium' {
+    font-family: $font-medium-family;
+    font-size: $font-medium-size;
+  } @else if $size == 'large' {
+    font-family: $font-large-family;
+    font-size: $font-large-size;
+  } @else if $size == 'x-large' {
+    font-family: $font-x-large-family;
+    font-size: $font-x-large-size;
+  } @else if $size == 'xx-large' {
+    font-family: $font-xx-large-family;
+    font-size: $font-xx-large-size;
+  } @else {
+    @warn "Invalid $size `#{$depth}` for mixin `font`.";
+  }
+}

@@ -1,13 +1,13 @@
-@import './font-awesome/css/fa-svg-with-js.css';
 @import "_colours";
-
-$font: 'Arial', cursive;
+@import "_variables";
 
 html, body {
+  @include font('medium');
+  cursor: default;
+  user-select: none;
   overflow: auto;
-  font-family: $font;  
   background-color: $colour-background;
-  color: $colour-text;
+  color: $colour-text-primary;
   padding: 0;
   margin: 0;
   width: 100%;
@@ -15,8 +15,8 @@ html, body {
 }
 
 ::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+  width: 0.33em;
+  height: 0.33em;
 }
 
 ::-webkit-scrollbar-track {
@@ -28,25 +28,28 @@ html, body {
 }
 
 input, select, button {
-  font-family: $font;
-  border: 1px solid transparent;
-  border-bottom: 1px solid $colour-border-lighter;  
+  @include font('medium');
+  border: 0.0625em solid transparent;
+  border-bottom: 0.0625em solid $colour-accent;
   background-color: transparent;
-  padding: 5px 15px;
-  color: $colour-text;  
+  padding: 0.5em 1em;
+  color: $colour-text-primary;
   &:disabled {
     cursor: not-allowed;
   }
+  &:hover {
+    border-bottom-color: $colour-hover;
+  }
   &:focus {
     outline: 0;
+    border-bottom-color: $colour-focus;
   }
 }
 
-button, input[type=button] {  
+button, input[type=button] {
   cursor: pointer;
   border: none;
-  &:hover:enabled { 
-    color: $colour-background;
+  &:hover:enabled {
     background-color: $colour-accent;
   }
 }
@@ -56,10 +59,18 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 select {
-  padding: 5px 5px;
+  padding: 0.5em 0.5em;
   outline: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 0.5em 0;
+  padding-bottom: 0.5em;
   color: $colour-accent;
+  border-bottom: 0.0625em solid $colour-divider;
+}
+
+svg {
+  fill: $colour-text-primary;
+  height: 1em;
 }

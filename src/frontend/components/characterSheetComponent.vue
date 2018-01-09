@@ -31,23 +31,18 @@
 <style lang="scss">
   @import '../sass/_colours.scss';
   @import '../sass/_cards.scss';
-  #character-component {  
-    margin: 10px;  
+
+  #character-component {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);    
-    grid-template-rows: repeat(25, 1fr);   
-    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(21em, 1fr));
+    grid-auto-flow: dense;
     .section {
-      h5 {
-        margin-top: 0;
-        color: $colour-text-lighter;
-      }
-      @include card-1;
+      @include card(1);
+      padding: 1em;
+      margin: 0.25em;
       background-color: $colour-background-lighter;
-      border-radius: 5px;
-      padding: 10px;
       input, select {
-        color: $colour-text-lighter;
+        color: $colour-text-primary;
         background-color: $colour-background-lighter;
       }
     }

@@ -1,25 +1,34 @@
-$hover-modifier: 2.5%;
+$blue-accent: #2196f3;
+$blue-focus: #40c4ff;
+$blue-hover: #80d8ff;
 
-$colour-text: #8f99a1;
-$colour-text-hover: lighten($colour-text, $hover-modifier);
-$colour-text-darker: #88939c;
-$colour-text-darker-hover: lighten($colour-text-darker, $hover-modifier);
-$colour-text-lighter: #969ba4;
-$colour-text-lighter-hover: lighten($colour-text-lighter, $hover-modifier);
+$green-accent: #4caf50;
+$green-focus: #69f0ae;
+$green-hover: #b9f6ca;
 
-$colour-accent: #c4c4ff;
+$yellow-accent: #ffc107;
+$yellow-focus: #ffd740;
+$yellow-hover: #ffe57f;
 
-$colour-background: #2e3337;
-$colour-background-hover: lighten($colour-background, $hover-modifier);
-$colour-background-darker: #222629;
-$colour-background-darker-hover: lighten($colour-background-darker, $hover-modifier);
-$colour-background-lighter: #383b41;
-$colour-background-lighter-hover: lighten($colour-background-lighter, $hover-modifier);
+$colour-accent: $blue-accent;
+$colour-focus: $blue-focus;
+$colour-hover: $blue-hover;
 
-$border-darkness: 5%;
-$colour-border: darken($colour-background, $border-darkness);
-$colour-border-darker: darken($colour-background-darker, $border-darkness);
-$colour-border-lighter: darken($colour-background-lighter, $border-darkness);
+$colour-text-primary: #ffffff;
+$colour-text-secondary: fade-out($colour-text-primary, 0.3);
+$colour-text-disabled: fade-out($colour-text-primary, 0.3);
+$colour-text-hover: $colour-hover;
+$colour-text-focus: $colour-focus;
 
-$colour-danger: #EF5350;
-$colour-success: #66BB6A;
+$colour-divider: fade-out($colour-text-primary, 0.88);
+
+$colour-ribbon: $colour-accent;
+$colour-ribbon-hover: $colour-hover;
+
+$colour-background: #303030;
+$colour-background-darker: #212121;
+$colour-background-lighter: #424242;
+$colour-background-hover: fade-out(#ffffff, 0.88);
+
+$colour-danger: #ef5350;
+$colour-success: #66bb6a;

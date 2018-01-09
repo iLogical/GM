@@ -11,6 +11,7 @@ module.exports = {
     filename: '[name].js',
     pathinfo: true
   },
+  watch: true,
   node: {
     __dirname: false,
     __filename: false
@@ -24,7 +25,8 @@ module.exports = {
   target: 'electron',
   module: {
     rules: [
-      { test: /\.(svg|woff|woff2|eot|ttf|html)/, loader: 'file-loader?name=[name].[ext]' },
+      { test: /\.svg$/, loader: 'svg-inline-loader?classPrefix' },
+      { test: /\.html$/, loader: 'file-loader?name=[name].[ext]' },
       { test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader'] },
       { test: /\.css$/, loaders: ['style-loader', 'css-loader'] },
       { test: /\.json$/, loader: 'json-loader' },

@@ -1,13 +1,47 @@
 <template>
-  <div id="skills" class="section">      
+  <div id="skills" class="section">
     <h5>Skills</h5>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
+    <div>Test</div>
   </div>
 </template>
 <style lang="scss">
   @import '../../sass/_colours.scss';
   #skills {
-    grid-column: 1;
-    grid-row: 7 / 18;
+    grid-row: span 5;
+    grid-auto-rows: auto;
   }
 </style>
 <script>

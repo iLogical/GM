@@ -4,9 +4,7 @@
       <div id="characterId">
         {{character.id}}
       </div>
-      <button id="remove" @click.stop="onRemoveClicked">
-        <i class="fa fa-times fa-fw" aria-hidden="true"></i>
-      </button>
+      <div id="remove" @click.stop="onRemoveClicked" v-html="removeIcon"></div>
     </div>
     <br>
     <br>
@@ -24,6 +22,8 @@
 </template>
 <style lang="scss">
   @import '../../sass/_colours.scss';
+  @import '../../sass/_variables.scss';
+
   #character-card-component {
     height: 100%;
     width: 100%;
@@ -31,23 +31,23 @@
       display: flex;
       width: 100%;
       justify-content: space-between;
+      line-height: 2em;
+      border-bottom: 1px solid $colour-divider;
       #characterId {
+        @include font('x-small');
         width: 100%;
-        color: $colour-text-lighter;
-        font-size: 10px;
-        font-weight: bolder;
-        line-height: 25px;
+        color: $colour-text-primary;
         &:hover {
-          color: $colour-text-lighter-hover;
+          color: $colour-text-hover;
           cursor: pointer;
         }
       }
       #remove {
-        color: $colour-text-lighter;
-        padding: 5px;
+        font-size: $font-x-small-size;
         &:hover {
-          background-color: transparent;
-          color: $colour-danger;
+          svg {
+            fill: $colour-danger;
+          }
         }
       }
     }
@@ -57,7 +57,8 @@
   import Vuex from 'vuex'
   import classes from '../../../static/classes.json'
   import races from '../../../static/races.json'
-  
+  import removeIcon from '../../../static/icons/SVG/cross.svg'
+
   export default {
     props: {
       character: {
@@ -68,7 +69,8 @@
     data () {
       return {
         classes,
-        races
+        races,
+        removeIcon
       }
     },
     computed: {

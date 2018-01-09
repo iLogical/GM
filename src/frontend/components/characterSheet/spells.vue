@@ -6,8 +6,6 @@
 <style lang="scss">
   @import '../../sass/_colours.scss';
   #spells {
-    grid-column: 2;
-    grid-row: 16 / 26;
   }
 </style>
 <script>

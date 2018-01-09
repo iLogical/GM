@@ -1,62 +1,62 @@
 <template>
-  <div id="ability" class="section">      
+  <div id="ability" class="section">
     <h5>Ability Scores</h5>
     <div class="row">
-      <div class="row-section">
+      <div class="row-section stat">
         <div>Strength</div>
         <input :value="character.abilities.strength" @input="onStrengthChange($event)" type="number" min="0" max="18">
       </div>
-      <div class="row-section">
+      <div class="row-section modifier">
           <div>Modifier</div>
           <input disabled :value="strengthModifier">
       </div>
     </div>
     <div class="row">
-      <div class="row-section">
+      <div class="row-section stat">
         <div>Dexterity</div>
         <input :value="character.abilities.dexterity" @input="onDexterityChange($event)" type="number" min="0" max="18">
       </div>
-      <div class="row-section">
+      <div class="row-section modifier">
           <div>Modifier</div>
           <input disabled :value="dexterityModifier">
       </div>
     </div>
     <div class="row">
-      <div class="row-section">
+      <div class="row-section stat">
         <div>Constitution</div>
         <input :value="character.abilities.constitution" @input="onConstitutionChange($event)" type="number" min="0" max="18">
       </div>
-      <div class="row-section">
+      <div class="row-section modifier">
           <div>Modifier</div>
           <input disabled :value="constitutionModifier">
       </div>
     </div>
     <div class="row">
-      <div class="row-section">
+      <div class="row-section stat">
         <div>Intelligence</div>
         <input :value="character.abilities.intelligence" @input="onIntelligenceChange($event)" type="number" min="0" max="18">
       </div>
-      <div class="row-section">
+      <div class="row-section modifier">
           <div>Modifier</div>
           <input disabled :value="intelligenceModifier">
       </div>
     </div>
     <div class="row">
-      <div class="row-section">
+      <div class="row-section stat">
         <div>Wisdom</div>
         <input :value="character.abilities.wisdom" @input="onWisdomChange($event)" type="number" min="0" max="18">
       </div>
-      <div class="row-section">
+      <div class="row-section modifier">
           <div>Modifier</div>
           <input disabled :value="wisdomModifier">
       </div>
     </div>
     <div class="row">
-      <div class="row-section">
+      <div class="row-section stat">
         <div>Charisma</div>
         <input :value="character.abilities.charisma" @input="onCharismaChange($event)" type="number" min="0" max="18">
       </div>
-      <div class="row-section">
+      <div class="row-section modifier">
           <div>Modifier</div>
           <input disabled :value="charismaModifier">
       </div>
@@ -65,22 +65,32 @@
 </template>
 <style lang="scss">
   @import '../../sass/_colours.scss';
+  @import '../../sass/_variables.scss';
   #ability {
-    grid-column: 1;
-    grid-row: 2 / 5;
+    grid-row: span 2;
+    grid-column: span 1;
+    display: flex;
+    flex-direction: column;
     .row {
       display: flex;
-      justify-content: space-around;    
-      font-size: .66em;
-      line-height: 2.8em;
+      justify-content: space-between;
+
       .row-section {
         display: flex;
         justify-content: space-around;
-        border-bottom: 1px solid $colour-border-lighter;
-        margin: 0px 3%;
-        padding: 1% 0;
+        border-bottom: 0.0625em solid $colour-accent;
         div {
-          width: 5.5em;
+          padding: 0.5em 0;
+        }
+        &.stat {
+          div {
+            width: 6.2em;
+          }
+        }
+        &.modifier {
+          div {
+            width: 4.1em;
+          }
         }
         input {
           text-align: center;
