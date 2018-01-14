@@ -1,74 +1,22 @@
 <template>
   <div id="splash-screen-component">
-    <div class="section" v-for="character in characters" :key="'character_'+character.id">
-      <character-card-component :character="character"></character-card-component>
-    </div>
-    <div id="add" class="section" @click="createCharacter" v-html="addIcon">
-    </div>
   </div>
 </template>
 <style lang="scss">
   @import '../sass/_colours.scss';
   @import '../sass/_cards.scss';
   #splash-screen-component {
-    margin: 0.5em;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(12.5em, 1fr));
-    grid-auto-rows: 18.75em;
-    grid-gap: 0.5em;
-    .section {
-      @include card(1);
-      background-color: $colour-background-lighter;
-      padding: 0.5em;
-      transition: background-color 0.5s ease-in-out;
-      transition: box-shadow 0.5s ease-in-out;
-      &:hover {
-        @include card(2);
-        background-color: $colour-background-hover;
-        color: $colour-text-hover;
-        cursor: pointer;
-      }
-      &#add {
-        svg {
-          height: 100%;
-          width: 100%;
-          display: block;
-          margin: auto;
-        }
-        &:hover {
-          svg {
-            path {
-              fill: $colour-text-hover;
-            }
-          }
-        }
-      }
-    }
   }
 </style>
 <script>
   import Vuex from 'vuex'
-  import CharacterCardComponent from './splashScreen/characterCardComponent.vue'
-  import addIcon from '../../static/icons/SVG/user-plus.svg'
 
   export default {
-    data () {
-      return {
-        addIcon
-      }
-    },
-    computed: {
-      ...Vuex.mapState('CharacterModule', ['characters'])
-    },
     methods: {
-      ...Vuex.mapActions(['changeCurrentCharacter']),
-      ...Vuex.mapActions('CharacterModule', ['createCharacter'])
+      ...Vuex.mapActions(['changeCurrentCharacter'])
     },
     mounted () {
       this.changeCurrentCharacter()
-    },
-    components: {
-      CharacterCardComponent
     }
   }
 </script>

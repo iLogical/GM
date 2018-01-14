@@ -35,12 +35,16 @@
   #character-component {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(21em, 1fr));
+    grid-auto-rows: 1em;
+    grid-gap: 0.5em;
     grid-auto-flow: dense;
     .section {
       @include card(1);
       padding: 1em;
       margin: 0.25em;
       background-color: $colour-background-lighter;
+      grid-row: span 3;
+      grid-column: span 1;
       input, select {
         color: $colour-text-primary;
         background-color: $colour-background-lighter;

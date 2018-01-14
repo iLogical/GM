@@ -1,0 +1,97 @@
+{
+  "blue": {
+    "accent": "#2196F3",
+    "focus": "#448AFF",
+    "hover": "#82B1FF"
+  },
+  "light-blue": {
+    "accent": "#03A9F4",
+    "focus": "#40C4FF",
+    "hover": "#80D8FF"
+  },
+  "cyan": {
+    "accent": "#00BCD4",
+    "focus": "#18FFFF",
+    "hover": "#84FFFF"
+  },
+  "green": {
+    "accent": "#4CAF50",
+    "focus": "#69F0AE",
+    "hover": "#B9F6CA"
+  },
+  "light-green": {
+   "accent": "#8BC34A",
+   "focus": "#B2FF59",
+   "hover": "#CCFF90"
+  },
+  "yellow": {
+   "accent": "#FFEB3B",
+   "focus": "#FFFF00",
+   "hover": "#FFFF8D"
+  },
+  "amber": {
+    "accent": "#FFC107",
+    "focus": "#FFD740",
+    "hover": "#FFE57F"
+  },
+  "red": {
+    "accent": "#F44336",
+    "focus": "#FF5252",
+    "hover": "#FF8A80"
+  },
+  "pink": {
+    "accent": "#E91E63",
+    "focus": "#FF4081",
+    "hover": "#FF80AB"
+  },
+  "purple": {
+    "accent": "#9C27B0",
+    "focus": "#E040FB",
+    "hover": "#EA80FC"
+  },
+  "deep-purple": {
+    "accent": "#673AB7",
+    "focus": "#7C4DFF",
+    "hover": "#B388FF"
+  },
+  "indigo": {
+    "accent": "#3F51B5",
+    "focus": "#536DFE",
+    "hover": "#8C9EFF"
+  },
+  "teal": {
+    "accent": "#009688",
+    "focus": "#64FFDA",
+    "hover": "#A7FFEB"
+  },
+  "brown": {
+    "accent": "#795548",
+    "focus": "#BCAAA4",
+    "hover": "#D7CCC8"
+  },
+  "orange": {
+    "accent": "#FF9800",
+    "focus": "#FFAB40",
+    "hover": "#FFD180"
+  },
+  "lime": {
+    "accent": "#CDDC39",
+    "focus": "#EEFF41",
+    "hover": "#F4FF81"
+  },
+  "deep-orange": {
+    "accent": "#FF5722",
+    "focus": "#FF6E40",
+    "hover": "#FF9E80"
+  },
+  "blue-grey": {
+    "accent": "#607D8B",
+    "focus": "#B0BEC5",
+    "hover": "#CFD8DC"
+  },
+  "grey": {
+    "accent": "#9E9E9E",
+    "focus": "#EEEEEE",
+    "hover": "#F5F5F5"
+  }
+}

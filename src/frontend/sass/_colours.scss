@@ -1,18 +1,8 @@
-$blue-accent: #2196f3;
-$blue-focus: #40c4ff;
-$blue-hover: #80d8ff;
+@import "_themes";
 
-$green-accent: #4caf50;
-$green-focus: #69f0ae;
-$green-hover: #b9f6ca;
-
-$yellow-accent: #ffc107;
-$yellow-focus: #ffd740;
-$yellow-hover: #ffe57f;
-
-$colour-accent: $blue-accent;
-$colour-focus: $blue-focus;
-$colour-hover: $blue-hover;
+$colour-accent: $light-blue-accent;
+$colour-focus: $light-blue-focus;
+$colour-hover: $light-blue-hover;
 
 $colour-text-primary: #ffffff;
 $colour-text-secondary: fade-out($colour-text-primary, 0.3);

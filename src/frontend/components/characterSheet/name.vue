@@ -1,7 +1,7 @@
 <template>
-  <div id="name" class="section">
-    <div class="wrapper">
-      <h5 class="title">Name</h5>
+  <div id="name" class="section" :class="{'is-expanded': expanded}">
+    <h5 @click="toggleExpanded" class="title">Name</h5>
+    <div v-if="expanded" class="expanded">
       <input class="name" :value="character.name" @input="onNameChange($event)">
       <div>
         <select class="alignment" :value="character.alignment" @change="onAlignmentChange($event)">
@@ -30,7 +30,13 @@
 <style lang="scss">
   @import '../../sass/_colours.scss';
   #name {
-    .wrapper {
+    &.is-expanded {
+      grid-row: span 8;
+    }
+    h5 {
+      cursor: pointer;
+    }
+    .expanded {
       display: flex;
       flex-direction: column;
       div {
@@ -57,10 +63,14 @@
       return {
         alignments,
         classes,
-        races
+        races,
+        expanded: true
       }
     },
     methods: {
+      toggleExpanded () {
+        this.expanded = !this.expanded;
+      },
       onNameChange (e) {
         this.updateCharacter({character: this.character, changeDelta: {name: e.target.value}})
       },

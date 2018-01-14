@@ -20,11 +20,14 @@ html, body {
 }
 
 ::-webkit-scrollbar-track {
-  background: $colour-background-darker;
+  background-color: $colour-background-darker;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $colour-accent;
+  background-color: $colour-background-lighter;
+  &:hover {
+    background-color: $colour-hover;
+  }
 }
 
 input, select, button {

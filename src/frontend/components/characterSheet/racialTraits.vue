@@ -6,6 +6,8 @@
 <style lang="scss">
   @import '../../sass/_colours.scss';
   #racial-traits {
+    grid-row: span 1;
+    grid-column: span 1;
   }
 </style>
 <script>

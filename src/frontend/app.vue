@@ -6,7 +6,7 @@
           <div v-html="homeIcon"></div>
           <div>Home</div>
         </button>
-        <button @click="changeCurrentScreen('splash')">
+        <button @click="changeCurrentScreen('characters')">
           <div v-html="characterIcon"></div>
           <div>Characters</div>
         </button>
@@ -21,7 +21,7 @@
   #app {
     #main {
       position: relative;
-      top: 2em;
+      top: 1.718em;
       bottom: 0;
       left: 0;
       right: 0;
@@ -52,6 +52,7 @@
   import Vuex from 'vuex'
   import RibbonComponent from './components/ribbonComponent.vue'
   import SplashScreenComponent from './components/splashScreenComponent.vue'
+  import CharactersScreenComponent from './components/charactersScreenComponent.vue'
   import CharacterSheetComponent from './components/characterSheetComponent.vue'
   import homeIcon from '../static/icons/SVG/home.svg'
   import characterIcon from '../static/icons/SVG/user.svg'
@@ -68,6 +69,8 @@
         switch (this.currentScreen) {
           case 'splash':
             return 'SplashScreenComponent'
+          case 'characters':
+            return 'CharactersScreenComponent'
           case 'character':
             return 'CharacterSheetComponent'
         }
@@ -83,8 +86,9 @@
     },
     components: {
       RibbonComponent,
-      SplashScreenComponent,
-      CharacterSheetComponent
+      CharactersScreenComponent,
+      CharacterSheetComponent,
+      SplashScreenComponent
     }
   }
 </script>
