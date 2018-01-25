@@ -1,8 +1,8 @@
 @import "_themes";
 
-$colour-accent: $light-blue-accent;
-$colour-focus: $light-blue-focus;
-$colour-hover: $light-blue-hover;
+$colour-accent: $blue-accent;
+$colour-focus: $blue-focus;
+$colour-hover: $blue-hover;
 
 $colour-text-primary: #ffffff;
 $colour-text-secondary: fade-out($colour-text-primary, 0.3);
@@ -15,10 +15,14 @@ $colour-divider: fade-out($colour-text-primary, 0.88);
 $colour-ribbon: $colour-accent;
 $colour-ribbon-hover: $colour-hover;
 
+$colour-danger: #ef5350;
+$colour-success: #66bb6a;
+
 $colour-background: #303030;
 $colour-background-darker: #212121;
 $colour-background-lighter: #424242;
-$colour-background-hover: fade-out(#ffffff, 0.88);
+$hover-percent: 3%;
 
-$colour-danger: #ef5350;
-$colour-success: #66bb6a;
+@function hover($color) {
+  @return lighten($color, $hover-percent);
+}

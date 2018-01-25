@@ -3,8 +3,8 @@
   </div>
 </template>
 <style lang="scss">
-  @import '../sass/_colours.scss';
-  @import '../sass/_cards.scss';
+  @import '../sass/_colours';
+  @import '../sass/_cards';
   #splash-screen-component {
   }
 </style>

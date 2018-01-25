@@ -6,7 +6,7 @@ html, body {
   cursor: default;
   user-select: none;
   overflow: auto;
-  background-color: $colour-background;
+  background-color: $colour-background-darker;
   color: $colour-text-primary;
   padding: 0;
   margin: 0;
@@ -24,7 +24,7 @@ html, body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: $colour-background-lighter;
+  background-color: $colour-background;
   &:hover {
     background-color: $colour-hover;
   }
@@ -71,6 +71,7 @@ h1, h2, h3, h4, h5, h6 {
   padding-bottom: 0.5em;
   color: $colour-accent;
   border-bottom: 0.0625em solid $colour-divider;
+  font-family: 'Cinzel Decorative', cursive;
 }
 
 svg {

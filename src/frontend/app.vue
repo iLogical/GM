@@ -17,7 +17,7 @@
   </div>
 </template>
 <style lang="scss">
-  @import './sass/_colours.scss';
+  @import './sass/_colours';
   #app {
     #main {
       position: relative;

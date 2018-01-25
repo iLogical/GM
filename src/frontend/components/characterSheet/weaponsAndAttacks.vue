@@ -1,13 +1,10 @@
 <template>
-  <div id="weapons-and-attacks" class="section">
-    <h5>Weapons And Attacks</h5>
+  <div id="weapons-and-attacks">
   </div>
 </template>
 <style lang="scss">
-  @import '../../sass/_colours.scss';
+  @import '../../sass/_colours';
   #weapons-and-attacks {
-    grid-row: span 1;
-    grid-column: span 1;
   }
 </style>
 <script>

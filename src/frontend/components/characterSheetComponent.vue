@@ -1,59 +1,56 @@
 <template>
   <div id="character-component">
-    <name-component :character="currentCharacter"></name-component>
-    <ability-component :character="currentCharacter"></ability-component>
-    <racial-traits-component :character="currentCharacter"></racial-traits-component>
-    <skills-component :character="currentCharacter"></skills-component>
-    <armor-and-weapon-proficiencies-component :character="currentCharacter"></armor-and-weapon-proficiencies-component>
-    <class-features-component :character="currentCharacter"></class-features-component>
-    <weapons-and-attacks-component :character="currentCharacter"></weapons-and-attacks-component>
-    <armor-and-armor-class-component :character="currentCharacter"></armor-and-armor-class-component>
-    <feats-component :character="currentCharacter"></feats-component>
-    <equipment-component :character="currentCharacter"></equipment-component>
-    <spells-component :character="currentCharacter"></spells-component>
-    <div id="l" class="section">
-      <h5>Character Portrait</h5>
-    </div>
-    <div id="m" class="section">
-      <h5>Character History</h5>
-    </div>
-    <div id="n" class="section">
-      <h5>Monsters Killed</h5>
-    </div>
-    <div id="o" class="section">
-      <h5>Most Damage Dealt</h5>
-    </div>
-    <div id="p" class="section">
-      <h5>Notes</h5>
+    <h2>
+      <div v-html="quillIcon"></div>
+      <div>{{currentCharacter.name}}</div>
+    </h2>
+    <div id="character-component-grid">
+      <character-sheet-section :title="'Name'" :height="8"><name-component :character="currentCharacter"></name-component></character-sheet-section>
+      <character-sheet-section :title="'Ability'" :height="12"><ability-component :character="currentCharacter"></ability-component></character-sheet-section>
+      <character-sheet-section :title="'Racial Traits'" :height="3"><racial-traits-component :character="currentCharacter"></racial-traits-component></character-sheet-section>
+      <character-sheet-section :title="'Skills'" :height="3"><skills-component :character="currentCharacter"></skills-component></character-sheet-section>
+      <character-sheet-section :title="'Armor And Weapon Proficiencies'" :height="3"><armor-and-weapon-proficiencies-component :character="currentCharacter"></armor-and-weapon-proficiencies-component></character-sheet-section>
+      <character-sheet-section :title="'Class Features'" :height="3"><class-features-component :character="currentCharacter"></class-features-component></character-sheet-section>
+      <character-sheet-section :title="'Weapons And Attacks'" :height="3"><weapons-and-attacks-component :character="currentCharacter"></weapons-and-attacks-component></character-sheet-section>
+      <character-sheet-section :title="'Armor And Armor Class'" :height="3"><armor-and-armor-class-component :character="currentCharacter"></armor-and-armor-class-component></character-sheet-section>
+      <character-sheet-section :title="'Feats'" :height="3"><feats-component :character="currentCharacter"></feats-component></character-sheet-section>
+      <character-sheet-section :title="'Equipment'" :height="3"><equipment-component :character="currentCharacter"></equipment-component></character-sheet-section>
+      <character-sheet-section :title="'Spells'" :height="3"><spells-component :character="currentCharacter"></spells-component></character-sheet-section>
+      <character-sheet-section :title="'Portrait'" :height="3"><div id="l"></div></character-sheet-section>
+      <character-sheet-section :title="'History'" :height="3"><div id="m"></div></character-sheet-section>
+      <character-sheet-section :title="'Monsters Killed'" :height="3"><div id="n"></div></character-sheet-section>
+      <character-sheet-section :title="'Most Damage Dealt'" :height="3"><div id="o"></div></character-sheet-section>
+      <character-sheet-section :title="'Notes'" :height="3"><div id="p"></div></character-sheet-section>
     </div>
   </div>
 </template>
 <style lang="scss">
-  @import '../sass/_colours.scss';
-  @import '../sass/_cards.scss';
+  @import '../sass/_colours';
 
   #character-component {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(21em, 1fr));
-    grid-auto-rows: 1em;
-    grid-gap: 0.5em;
-    grid-auto-flow: dense;
-    .section {
-      @include card(1);
-      padding: 1em;
-      margin: 0.25em;
-      background-color: $colour-background-lighter;
-      grid-row: span 3;
-      grid-column: span 1;
-      input, select {
-        color: $colour-text-primary;
-        background-color: $colour-background-lighter;
+    h2 {
+      display: flex;
+      padding: 0;
+      margin: 0.83em 0;
+      svg {
+        fill: $colour-accent;
+        height: 1.5em;
+        margin-right: 0.5em;
       }
+    }
+    #character-component-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(21em, 1fr));
+      grid-auto-rows: 1em;
+      grid-gap: 0.5em;
+      grid-auto-flow: dense;
     }
   }
 </style>
 <script>
+  import quillIcon from '../../static/icons/SVG/quill.svg'
   import Vuex from 'vuex'
+  import CharacterSheetSection from './characterSheet/section.vue'
   import NameComponent from './characterSheet/name.vue'
   import AbilityComponent from './characterSheet/ability.vue'
   import RacialTraitsComponent from './characterSheet/racialTraits.vue'
@@ -67,10 +64,16 @@
   import SpellsComponent from './characterSheet/spells.vue'
 
   export default {
+    data () {
+      return {
+        quillIcon
+      }
+    },
     computed: {
       ...Vuex.mapGetters(['currentCharacter', 'currentCharacterClass', 'currentCharacterRace'])
     },
     components: {
+      CharacterSheetSection,
       NameComponent,
       AbilityComponent,
       RacialTraitsComponent,

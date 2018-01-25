@@ -1,82 +1,73 @@
 <template>
-  <div id="ability" class="section" :class="{'is-expanded': expanded}">
-    <h5 @click="toggleExpanded" class="title">Ability Scores</h5>
-    <div v-if="expanded" class="expanded">
-      <div class="row">
-        <div class="row-section stat">
-          <div>Strength</div>
-          <input :value="character.abilities.strength" @input="onStrengthChange($event)" type="number" min="0" max="18">
-        </div>
-        <div class="row-section modifier">
-            <div>Modifier</div>
-            <input disabled :value="strengthModifier">
-        </div>
+  <div id="ability">
+    <div class="row">
+      <div class="row-section stat">
+        <div>Strength</div>
+        <input :value="character.abilities.strength" @input="onStrengthChange($event)" type="number" min="0" max="18">
       </div>
-      <div class="row">
-        <div class="row-section stat">
-          <div>Dexterity</div>
-          <input :value="character.abilities.dexterity" @input="onDexterityChange($event)" type="number" min="0" max="18">
-        </div>
-        <div class="row-section modifier">
-            <div>Modifier</div>
-            <input disabled :value="dexterityModifier">
-        </div>
+      <div class="row-section modifier">
+          <div>Modifier</div>
+          <input disabled :value="strengthModifier">
       </div>
-      <div class="row">
-        <div class="row-section stat">
-          <div>Constitution</div>
-          <input :value="character.abilities.constitution" @input="onConstitutionChange($event)" type="number" min="0" max="18">
-        </div>
-        <div class="row-section modifier">
-            <div>Modifier</div>
-            <input disabled :value="constitutionModifier">
-        </div>
+    </div>
+    <div class="row">
+      <div class="row-section stat">
+        <div>Dexterity</div>
+        <input :value="character.abilities.dexterity" @input="onDexterityChange($event)" type="number" min="0" max="18">
       </div>
-      <div class="row">
-        <div class="row-section stat">
-          <div>Intelligence</div>
-          <input :value="character.abilities.intelligence" @input="onIntelligenceChange($event)" type="number" min="0" max="18">
-        </div>
-        <div class="row-section modifier">
-            <div>Modifier</div>
-            <input disabled :value="intelligenceModifier">
-        </div>
+      <div class="row-section modifier">
+          <div>Modifier</div>
+          <input disabled :value="dexterityModifier">
       </div>
-      <div class="row">
-        <div class="row-section stat">
-          <div>Wisdom</div>
-          <input :value="character.abilities.wisdom" @input="onWisdomChange($event)" type="number" min="0" max="18">
-        </div>
-        <div class="row-section modifier">
-            <div>Modifier</div>
-            <input disabled :value="wisdomModifier">
-        </div>
+    </div>
+    <div class="row">
+      <div class="row-section stat">
+        <div>Constitution</div>
+        <input :value="character.abilities.constitution" @input="onConstitutionChange($event)" type="number" min="0" max="18">
       </div>
-      <div class="row">
-        <div class="row-section stat">
-          <div>Charisma</div>
-          <input :value="character.abilities.charisma" @input="onCharismaChange($event)" type="number" min="0" max="18">
-        </div>
-        <div class="row-section modifier">
-            <div>Modifier</div>
-            <input disabled :value="charismaModifier">
-        </div>
+      <div class="row-section modifier">
+          <div>Modifier</div>
+          <input disabled :value="constitutionModifier">
+      </div>
+    </div>
+    <div class="row">
+      <div class="row-section stat">
+        <div>Intelligence</div>
+        <input :value="character.abilities.intelligence" @input="onIntelligenceChange($event)" type="number" min="0" max="18">
+      </div>
+      <div class="row-section modifier">
+          <div>Modifier</div>
+          <input disabled :value="intelligenceModifier">
+      </div>
+    </div>
+    <div class="row">
+      <div class="row-section stat">
+        <div>Wisdom</div>
+        <input :value="character.abilities.wisdom" @input="onWisdomChange($event)" type="number" min="0" max="18">
+      </div>
+      <div class="row-section modifier">
+          <div>Modifier</div>
+          <input disabled :value="wisdomModifier">
+      </div>
+    </div>
+    <div class="row">
+      <div class="row-section stat">
+        <div>Charisma</div>
+        <input :value="character.abilities.charisma" @input="onCharismaChange($event)" type="number" min="0" max="18">
+      </div>
+      <div class="row-section modifier">
+          <div>Modifier</div>
+          <input disabled :value="charismaModifier">
       </div>
     </div>
   </div>
 </template>
 <style lang="scss">
-  @import '../../sass/_colours.scss';
-  @import '../../sass/_variables.scss';
+  @import '../../sass/_colours';
+  @import '../../sass/_variables';
   #ability {
     display: flex;
     flex-direction: column;
-    &.is-expanded {
-      grid-row: span 12;
-    }
-    h5 {
-      cursor: pointer;
-    }
     .row {
       display: flex;
       justify-content: space-between;

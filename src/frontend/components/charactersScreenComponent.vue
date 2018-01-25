@@ -8,8 +8,8 @@
   </div>
 </template>
 <style lang="scss">
-  @import '../sass/_colours.scss';
-  @import '../sass/_cards.scss';
+  @import '../sass/_colours';
+  @import '../sass/_cards';
   #character-screen-component {
     margin: 0.5em;
     display: grid;
@@ -18,13 +18,13 @@
     grid-gap: 0.5em;
     .section {
       @include card(1);
-      background-color: $colour-background-lighter;
+      background-color: $colour-background;
       padding: 0.5em;
       transition: background-color 0.5s ease-in-out;
       transition: box-shadow 0.5s ease-in-out;
       &:hover {
         @include card(2);
-        background-color: $colour-background-hover;
+        background-color: hover($colour-background);
         color: $colour-text-hover;
         cursor: pointer;
       }

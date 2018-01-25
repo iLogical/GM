@@ -21,8 +21,8 @@
   </div>
 </template>
 <style lang="scss">
-  @import '../../sass/_colours.scss';
-  @import '../../sass/_variables.scss';
+  @import '../../sass/_colours';
+  @import '../../sass/_variables';
 
   #character-card-component {
     height: 100%;

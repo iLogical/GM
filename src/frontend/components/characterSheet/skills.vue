@@ -1,13 +1,10 @@
 <template>
-  <div id="skills" class="section">
-    <h5>Skills</h5>
+  <div id="skills">
   </div>
 </template>
 <style lang="scss">
-  @import '../../sass/_colours.scss';
+  @import '../../sass/_colours';
   #skills {
-    grid-row: span 1;
-    grid-column: span 1;
   }
 </style>
 <script>

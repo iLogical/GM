@@ -1,19 +1,21 @@
-$font-x-small-family: 'Verdana', sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative|Open+Sans|Ubuntu');
+
+$font-x-small-family: 'Open Sans', sans-serif;
 $font-x-small-size: 0.625em;
 
-$font-small-family: 'Verdana', sans-serif;
+$font-small-family: 'Open Sans', sans-serif;
 $font-small-size: 0.8em;
 
-$font-medium-family: 'Arial', sans-serif;
+$font-medium-family: 'Ubuntu', sans-serif;
 $font-medium-size: 1em;
 
-$font-large-family: 'Arial', sans-serif;
+$font-large-family: 'Ubuntu', sans-serif;
 $font-large-size: 1.125em;
 
-$font-x-large-family: 'Arial', sans-serif;
+$font-x-large-family: 'Cinzel Decorative', cursive;
 $font-x-large-size: 1.5em;
 
-$font-xx-large-family: 'Arial', sans-serif;
+$font-xx-large-family: 'Cinzel Decorative', cursive;
 $font-xx-large-size: 2em;
 
 @mixin font($size) {

@@ -1,48 +1,37 @@
 <template>
-  <div id="name" class="section" :class="{'is-expanded': expanded}">
-    <h5 @click="toggleExpanded" class="title">Name</h5>
-    <div v-if="expanded" class="expanded">
-      <input class="name" :value="character.name" @input="onNameChange($event)">
-      <div>
-        <select class="alignment" :value="character.alignment" @change="onAlignmentChange($event)">
-          <option></option>
-          <option v-for="(alignment, alignmentIndex) in alignments" :value="alignmentIndex" :key="'alignment_'+alignmentIndex">{{alignment.name}}</option>
-        </select>
-        <select class="gender" :value="character.gender" @change="onGenderChange($event)">
-          <option></option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-        </select>
-      </div>
-      <div>
-        <select class="race" :value="character.race" @change="onRaceChange($event)">
-          <option></option>
-          <option v-for="(race, raceIndex) in races" :value="raceIndex" :key="'race_'+raceIndex">{{race.name}}</option>
-        </select>
-        <select class="class" :value="character.class" @change="onClassChange($event)">
-          <option></option>
-          <option v-for="(_class, classIndex) in classes" :value="classIndex" :key="'class_'+classIndex">{{_class.name}}</option>
-        </select>
-      </div>
+  <div id="name">
+    <input class="name" :value="character.name" @input="onNameChange($event)">
+    <div>
+      <select class="alignment" :value="character.alignment" @change="onAlignmentChange($event)">
+        <option></option>
+        <option v-for="(alignment, alignmentIndex) in alignments" :value="alignmentIndex" :key="'alignment_'+alignmentIndex">{{alignment.name}}</option>
+      </select>
+      <select class="gender" :value="character.gender" @change="onGenderChange($event)">
+        <option></option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+    </div>
+    <div>
+      <select class="race" :value="character.race" @change="onRaceChange($event)">
+        <option></option>
+        <option v-for="(race, raceIndex) in races" :value="raceIndex" :key="'race_'+raceIndex">{{race.name}}</option>
+      </select>
+      <select class="class" :value="character.class" @change="onClassChange($event)">
+        <option></option>
+        <option v-for="(_class, classIndex) in classes" :value="classIndex" :key="'class_'+classIndex">{{_class.name}}</option>
+      </select>
     </div>
   </div>
 </template>
 <style lang="scss">
-  @import '../../sass/_colours.scss';
+  @import '../../sass/_colours';
   #name {
-    &.is-expanded {
-      grid-row: span 8;
-    }
-    h5 {
-      cursor: pointer;
-    }
-    .expanded {
+    display: flex;
+    flex-direction: column;
+    div {
       display: flex;
-      flex-direction: column;
-      div {
-        display: flex;
-        justify-content: space-between;
-      }
+      justify-content: space-between;
     }
   }
 </style>

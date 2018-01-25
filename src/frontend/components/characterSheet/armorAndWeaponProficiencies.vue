@@ -1,13 +1,10 @@
 <template>
-  <div id="armor-and-weapon-proficiencies" class="section">
-    <h5>Armor And Weapons</h5>
+  <div id="armor-and-weapon-proficiencies">
   </div>
 </template>
 <style lang="scss">
-  @import '../../sass/_colours.scss';
+  @import '../../sass/_colours';
   #armor-and-weapon-proficiencies {
-    grid-row: span 1;
-    grid-column: span 1;
   }
 </style>
 <script>
