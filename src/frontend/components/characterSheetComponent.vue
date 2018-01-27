@@ -30,7 +30,7 @@
   #character-component {
     h2 {
       display: flex;
-      padding: 0;
+      padding: 0 0.83em;
       margin: 0.83em 0;
       svg {
         fill: $colour-accent;
