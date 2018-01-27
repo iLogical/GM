@@ -1,9 +1,9 @@
 <template>
   <div id="character-screen-component">
-    <div class="section" v-for="character in characters" :key="'character_'+character.id">
+    <div class="character-card" v-for="character in characters" :key="'character_'+character.id">
       <character-card-component :character="character"></character-card-component>
     </div>
-    <div id="add" class="section" @click="createCharacter" v-html="addIcon">
+    <div id="add" class="character-card" @click="createCharacter" v-html="addIcon">
     </div>
   </div>
 </template>
@@ -16,7 +16,7 @@
     grid-template-columns: repeat(auto-fill, minmax(12.5em, 1fr));
     grid-auto-rows: 18.75em;
     grid-gap: 0.5em;
-    .section {
+    .character-card {
       @include card(1);
       background-color: $colour-background;
       padding: 0.5em;
