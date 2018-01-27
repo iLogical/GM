@@ -60,14 +60,14 @@
     computed: {
       style () {
         if(this.expanded) {
-          return {'grid-row': 'span ' + this.height }
+          return {'grid-row': 'span ' + this.height };
         }
-        return {'grid-row': 'span 3' }
+        return {'grid-row': 'span 3' };
       }
     },
     methods: {
       toggleExpanded () {
-        this.expanded = !this.expanded;
+        this.expanded = !this.expanded
       }
     }
   }

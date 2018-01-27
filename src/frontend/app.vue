@@ -76,7 +76,7 @@
         }
       },
       ...Vuex.mapState(['currentScreen']),
-      ...Vuex.mapState('CharacterModule', ['characters']),
+      ...Vuex.mapState('CharacterModule', ['characters'])
     },
     methods: {
       ...Vuex.mapActions(['loadFromStorage', 'changeCurrentScreen'])
