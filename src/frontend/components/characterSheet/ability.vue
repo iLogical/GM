@@ -135,7 +135,7 @@
     },
     methods: {
       toggleExpanded () {
-        this.expanded = !this.expanded;
+        this.expanded = !this.expanded
       },
       onStrengthChange (e) {
         this.updateCharacterAbilities({character: this.character, changeDelta: {strength: e.target.value}})

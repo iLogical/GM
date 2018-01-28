@@ -2,8 +2,10 @@
   <div class="section" :style="style">
     <h5 @click="toggleExpanded" class="title">
       <div>{{title}}</div>
-      <div v-if="expanded" v-html="minusIcon"></div>
-      <div v-else v-html="plusIcon"></div>
+      <div v-if="canExpand">
+        <div v-if="expanded" v-html="minusIcon"></div>
+        <div v-else v-html="plusIcon"></div>
+      </div>
     </h5>
     <slot v-if="expanded"></slot>
   </div>
@@ -47,7 +49,13 @@
       },
       height: {
         type: Number,
-        required: true
+        required: false,
+        default: 3
+      },
+      width: {
+        type: Number,
+        required: false,
+        default: 1
       }
     },
     data () {
@@ -59,10 +67,13 @@
     },
     computed: {
       style () {
-        if(this.expanded) {
-          return {'grid-row': 'span ' + this.height };
+        if (this.expanded) {
+          return { 'grid-row': 'span ' + this.height, 'grid-column': 'span ' + this.width }
         }
-        return {'grid-row': 'span 3' };
+        return { 'grid-row': 'span 3', 'grid-column': 'span ' + this.width }
+      },
+      canExpand () {
+        return this.height !== 3
       }
     },
     methods: {

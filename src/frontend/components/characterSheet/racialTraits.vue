@@ -1,5 +1,6 @@
 <template>
   <div id="racial-traits">
+    <div></div>
   </div>
 </template>
 <style lang="scss">

@@ -8,7 +8,7 @@
       <character-sheet-section :title="'Name'" :height="8"><name-component :character="currentCharacter"></name-component></character-sheet-section>
       <character-sheet-section :title="'Ability'" :height="12"><ability-component :character="currentCharacter"></ability-component></character-sheet-section>
       <character-sheet-section :title="'Racial Traits'" :height="3"><racial-traits-component :character="currentCharacter"></racial-traits-component></character-sheet-section>
-      <character-sheet-section :title="'Skills'" :height="3"><skills-component :character="currentCharacter"></skills-component></character-sheet-section>
+      <character-sheet-section :title="'Skills'" :height="15"><skills-component :character="currentCharacter"></skills-component></character-sheet-section>
       <character-sheet-section :title="'Armor And Weapon Proficiencies'" :height="3"><armor-and-weapon-proficiencies-component :character="currentCharacter"></armor-and-weapon-proficiencies-component></character-sheet-section>
       <character-sheet-section :title="'Class Features'" :height="3"><class-features-component :character="currentCharacter"></class-features-component></character-sheet-section>
       <character-sheet-section :title="'Weapons And Attacks'" :height="3"><weapons-and-attacks-component :character="currentCharacter"></weapons-and-attacks-component></character-sheet-section>
