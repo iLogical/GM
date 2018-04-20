@@ -1,8 +1,13 @@
 <template>
   <div id="character-component">
     <h2>
-      <div v-html="quillIcon"></div>
-      <div>{{currentCharacter.name}}</div>
+      <div id="character-component-title">
+        <div v-html="quillIcon"></div>
+        <div>{{currentCharacter.name}}</div>
+      </div>
+        <div id="character-component-delete" @click="deleteCharacter">
+          <div v-html="removeIcon"></div>
+        </div>
     </h2>
     <div id="character-component-grid">
       <character-sheet-section :title="'Name'" :height="8"><name-component :character="currentCharacter"></name-component></character-sheet-section>
@@ -29,13 +34,24 @@
 
 #character-component {
   h2 {
-    display: flex;
     padding: 0 0.83em;
     margin: 0.83em 0;
-    svg {
-      fill: $colour-accent;
-      height: 1.5em;
-      margin-right: 0.5em;
+    display: flex;
+    justify-content: space-between;
+    #character-component-title {
+      display: flex;
+      svg {
+        fill: $colour-accent;
+        height: 1.5em;
+        margin-right: 0.5em;
+      }
+    }
+    #character-component-delete {
+      &:hover {
+        svg {
+          fill: $colour-danger;
+        }
+      }
     }
   }
   #character-component-grid {
@@ -48,6 +64,7 @@
 }
 </style>
 <script>
+import removeIcon from "../../static/icons/SVG/cross.svg";
 import quillIcon from "../../static/icons/SVG/quill.svg";
 import Vuex from "vuex";
 import CharacterSheetSection from "./characterSheet/section.vue";
@@ -66,8 +83,17 @@ import SpellsComponent from "./characterSheet/spells.vue";
 export default {
   data() {
     return {
-      quillIcon
+      quillIcon,
+      removeIcon
     };
+  },
+  methods: {
+    deleteCharacter() {
+      this.removeCharacter(this.currentCharacter)
+      this.changeCurrentScreen("characters")
+    },
+    ...Vuex.mapActions(["changeCurrentScreen"]),
+    ...Vuex.mapActions("CharacterModule", ["removeCharacter"])
   },
   computed: {
     ...Vuex.mapGetters([

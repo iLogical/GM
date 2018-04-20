@@ -90,7 +90,6 @@
       },
       onRemoveClicked () {
         this.removeCharacter(this.character)
-        this.changeCurrentScreen('characters')
       },
       ...Vuex.mapActions(['changeCurrentScreen', 'changeCurrentCharacter']),
       ...Vuex.mapActions('CharacterModule', ['removeCharacter'])

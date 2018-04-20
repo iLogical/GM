@@ -41,7 +41,6 @@ export default {
     },
     async changeCurrentCharacter({ commit, state }, character) {
       commit('CHANGE_CURRENT_CHARACTER', { character })
-      console.log('changeCurrentCharacter', state.currentCharacterId)
       await localforage.setItem('currentCharacterId', state.currentCharacterId)
     }
   },
