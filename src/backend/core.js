@@ -20,7 +20,6 @@ function createWindow () {
   mainWindow.on('closed', () => {
     mainWindow = null
   })
-  const appIcon = new Tray(path.join(__dirname, 'd20.png'));
   const contextMenu = Menu.buildFromTemplate([
       {
           label: 'Show App', click: function () {
@@ -35,7 +34,8 @@ function createWindow () {
           }
       }
   ])
-  appIcon.setContextMenu(contextMenu)
+  // const appIcon = new Tray(path.join(__dirname, 'd20.png'));
+  // appIcon.setContextMenu(contextMenu)
   mainWindow.maximize()
   Menu.setApplicationMenu(null)
 

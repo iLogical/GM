@@ -8,7 +8,7 @@
       <character-sheet-section :title="'Name'" :height="8"><name-component :character="currentCharacter"></name-component></character-sheet-section>
       <character-sheet-section :title="'Ability'" :height="12"><ability-component :character="currentCharacter"></ability-component></character-sheet-section>
       <character-sheet-section :title="'Racial Traits'" :height="3"><racial-traits-component :character="currentCharacter"></racial-traits-component></character-sheet-section>
-      <character-sheet-section :title="'Skills'" :height="15"><skills-component :character="currentCharacter"></skills-component></character-sheet-section>
+      <character-sheet-section :title="'Skills'" :height="31"><skills-component :character="currentCharacter"></skills-component></character-sheet-section>
       <character-sheet-section :title="'Armor And Weapon Proficiencies'" :height="3"><armor-and-weapon-proficiencies-component :character="currentCharacter"></armor-and-weapon-proficiencies-component></character-sheet-section>
       <character-sheet-section :title="'Class Features'" :height="3"><class-features-component :character="currentCharacter"></class-features-component></character-sheet-section>
       <character-sheet-section :title="'Weapons And Attacks'" :height="3"><weapons-and-attacks-component :character="currentCharacter"></weapons-and-attacks-component></character-sheet-section>
@@ -25,66 +25,70 @@
   </div>
 </template>
 <style lang="scss">
-  @import '../sass/_colours';
+@import "../sass/_colours";
 
-  #character-component {
-    h2 {
-      display: flex;
-      padding: 0 0.83em;
-      margin: 0.83em 0;
-      svg {
-        fill: $colour-accent;
-        height: 1.5em;
-        margin-right: 0.5em;
-      }
-    }
-    #character-component-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(21em, 1fr));
-      grid-auto-rows: 1em;
-      grid-gap: 0.5em;
-      grid-auto-flow: dense;
+#character-component {
+  h2 {
+    display: flex;
+    padding: 0 0.83em;
+    margin: 0.83em 0;
+    svg {
+      fill: $colour-accent;
+      height: 1.5em;
+      margin-right: 0.5em;
     }
   }
+  #character-component-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(21em, 1fr));
+    grid-auto-rows: 1em;
+    grid-gap: 0.5em;
+    grid-auto-flow: dense;
+  }
+}
 </style>
 <script>
-  import quillIcon from '../../static/icons/SVG/quill.svg'
-  import Vuex from 'vuex'
-  import CharacterSheetSection from './characterSheet/section.vue'
-  import NameComponent from './characterSheet/name.vue'
-  import AbilityComponent from './characterSheet/ability.vue'
-  import RacialTraitsComponent from './characterSheet/racialTraits.vue'
-  import SkillsComponent from './characterSheet/skills.vue'
-  import ArmorAndWeaponProficienciesComponent from './characterSheet/armorAndWeaponProficiencies.vue'
-  import ClassFeaturesComponent from './characterSheet/classFeatures.vue'
-  import WeaponsAndAttacksComponent from './characterSheet/weaponsAndAttacks.vue'
-  import ArmorAndArmorClassComponent from './characterSheet/armorAndArmorClass.vue'
-  import FeatsComponent from './characterSheet/feats.vue'
-  import EquipmentComponent from './characterSheet/equipment.vue'
-  import SpellsComponent from './characterSheet/spells.vue'
+import quillIcon from "../../static/icons/SVG/quill.svg";
+import Vuex from "vuex";
+import CharacterSheetSection from "./characterSheet/section.vue";
+import NameComponent from "./characterSheet/name.vue";
+import AbilityComponent from "./characterSheet/ability.vue";
+import RacialTraitsComponent from "./characterSheet/racialTraits.vue";
+import SkillsComponent from "./characterSheet/skills.vue";
+import ArmorAndWeaponProficienciesComponent from "./characterSheet/armorAndWeaponProficiencies.vue";
+import ClassFeaturesComponent from "./characterSheet/classFeatures.vue";
+import WeaponsAndAttacksComponent from "./characterSheet/weaponsAndAttacks.vue";
+import ArmorAndArmorClassComponent from "./characterSheet/armorAndArmorClass.vue";
+import FeatsComponent from "./characterSheet/feats.vue";
+import EquipmentComponent from "./characterSheet/equipment.vue";
+import SpellsComponent from "./characterSheet/spells.vue";
 
-  export default {
-    data () {
-      return {
-        quillIcon
-      }
-    },
-    computed: {
-      ...Vuex.mapGetters(['currentCharacter', 'currentCharacterClass', 'currentCharacterRace'])
-    },
-    components: {
-      CharacterSheetSection,
-      NameComponent,
-      AbilityComponent,
-      RacialTraitsComponent,
-      SkillsComponent,
-      ArmorAndWeaponProficienciesComponent,
-      ClassFeaturesComponent,
-      WeaponsAndAttacksComponent,
-      ArmorAndArmorClassComponent,
-      FeatsComponent,
-      EquipmentComponent,
-      SpellsComponent
-    }
+export default {
+  data() {
+    return {
+      quillIcon
+    };
+  },
+  computed: {
+    ...Vuex.mapGetters([
+      "currentCharacter",
+      "currentCharacterClass",
+      "currentCharacterRace"
+    ])
+  },
+  components: {
+    CharacterSheetSection,
+    NameComponent,
+    AbilityComponent,
+    RacialTraitsComponent,
+    SkillsComponent,
+    ArmorAndWeaponProficienciesComponent,
+    ClassFeaturesComponent,
+    WeaponsAndAttacksComponent,
+    ArmorAndArmorClassComponent,
+    FeatsComponent,
+    EquipmentComponent,
+    SpellsComponent
   }
+};
 </script>

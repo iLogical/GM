@@ -1,3 +1,4 @@
+import localforage from 'localforage'
 import alignments from '../../static/alignments.json'
 import classes from '../../static/classes.json'
 import races from '../../static/races.json'
@@ -11,10 +12,10 @@ export default {
     currentCharacterId: ''
   },
   mutations: {
-    CHANGE_CURRENT_SCREEN (state, {newScreen}) {
-      state.currentScreen = newScreen
+    CHANGE_CURRENT_SCREEN(state, { screen }) {
+      state.currentScreen = screen
     },
-    CHANGE_CURRENT_CHARACTER (state, {character}) {
+    CHANGE_CURRENT_CHARACTER(state, { character }) {
       state.currentCharacterId = character !== undefined ? character.id : undefined
     }
   },
@@ -22,14 +23,24 @@ export default {
     currentCharacter: state => state.CharacterModule.characters.find(character => character.id === state.currentCharacterId)
   },
   actions: {
-    async loadFromStorage ({dispatch}) {
+    async loadFromStorage({ dispatch, getters }) {
       await dispatch('CharacterModule/loadCharacters')
+
+      const characterId = await localforage.getItem('currentCharacterId')
+      await dispatch('changeCurrentCharacter', { id: characterId })
+      
+      const screen = await localforage.getItem('currentScreen')
+      if (screen !== 'character' || getters.currentCharacter) {
+        await dispatch('changeCurrentScreen', screen)
+      }
     },
-    async changeCurrentScreen ({commit}, newScreen) {
-      commit('CHANGE_CURRENT_SCREEN', {newScreen})
+    async changeCurrentScreen({ commit, state }, screen) {
+      commit('CHANGE_CURRENT_SCREEN', { screen })
+      await localforage.setItem('currentScreen', state.currentScreen)
     },
-    async changeCurrentCharacter ({commit}, character) {
-      commit('CHANGE_CURRENT_CHARACTER', {character})
+    async changeCurrentCharacter({ commit, state }, character) {
+      commit('CHANGE_CURRENT_CHARACTER', { character })
+      await localforage.setItem('currentCharacterId', state.currentCharacterId)
     }
   },
   modules: {
