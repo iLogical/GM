@@ -24,11 +24,12 @@ export default {
   },
   actions: {
     async loadFromStorage({ dispatch, getters }) {
-      await dispatch('CharacterModule/loadCharacters')
 
       const characterId = await localforage.getItem('currentCharacterId')
       await dispatch('changeCurrentCharacter', { id: characterId })
       
+      await dispatch('CharacterModule/loadCharacters')
+
       const screen = await localforage.getItem('currentScreen')
       if (screen !== 'character' || getters.currentCharacter) {
         await dispatch('changeCurrentScreen', screen)
@@ -40,6 +41,7 @@ export default {
     },
     async changeCurrentCharacter({ commit, state }, character) {
       commit('CHANGE_CURRENT_CHARACTER', { character })
+      console.log('changeCurrentCharacter', state.currentCharacterId)
       await localforage.setItem('currentCharacterId', state.currentCharacterId)
     }
   },
