@@ -36,46 +36,46 @@
   }
 </style>
 <script>
-  import Vuex from 'vuex'
-  import alignments from '../../../static/alignments.json'
-  import classes from '../../../static/classes.json'
-  import races from '../../../static/races.json'
+import Vuex from 'vuex'
+import alignments from '../../../static/alignments.json'
+import classes from '../../../static/classes.json'
+import races from '../../../static/races.json'
 
-  export default {
-    props: {
-      character: {
-        type: Object,
-        required: true
-      }
-    },
-    data () {
-      return {
-        alignments,
-        classes,
-        races,
-        expanded: true
-      }
-    },
-    methods: {
-      toggleExpanded () {
-        this.expanded = !this.expanded;
-      },
-      onNameChange (e) {
-        this.updateCharacter({character: this.character, changeDelta: {name: e.target.value}})
-      },
-      onAlignmentChange (e) {
-        this.updateCharacter({character: this.character, changeDelta: {alignment: e.target.value}})
-      },
-      onGenderChange (e) {
-        this.updateCharacter({character: this.character, changeDelta: {gender: e.target.value}})
-      },
-      onRaceChange (e) {
-        this.updateCharacter({character: this.character, changeDelta: {race: e.target.value}})
-      },
-      onClassChange (e) {
-        this.updateCharacter({character: this.character, changeDelta: {class: e.target.value}})
-      },
-      ...Vuex.mapActions('CharacterModule', ['updateCharacter'])
+export default {
+  props: {
+    character: {
+      type: Object,
+      required: true
     }
+  },
+  data () {
+    return {
+      alignments,
+      classes,
+      races,
+      expanded: true
+    }
+  },
+  methods: {
+    toggleExpanded () {
+      this.expanded = !this.expanded
+    },
+    onNameChange (e) {
+      this.updateCharacter({ character: this.character, changeDelta: { name: e.target.value } })
+    },
+    onAlignmentChange (e) {
+      this.updateCharacter({ character: this.character, changeDelta: { alignment: e.target.value } })
+    },
+    onGenderChange (e) {
+      this.updateCharacter({ character: this.character, changeDelta: { gender: e.target.value } })
+    },
+    onRaceChange (e) {
+      this.updateCharacter({ character: this.character, changeDelta: { race: e.target.value } })
+    },
+    onClassChange (e) {
+      this.updateCharacter({ character: this.character, changeDelta: { class: e.target.value } })
+    },
+    ...Vuex.mapActions('CharacterModule', ['updateCharacter'])
   }
+}
 </script>

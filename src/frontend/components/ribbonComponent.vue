@@ -1,10 +1,10 @@
 <template>
   <div id="ribbon-component">
     <div id="buttons">
-      <div id="minimize" class="icon" @click="minimize" v-html="minimizeIcon"></div>
-      <div v-if="isMaximized" id="maximize" class="icon" @click="maximize" v-html="maximizeIcon_shrink"></div>
-      <div v-else id="maximize" class="icon" @click="maximize" v-html="maximizeIcon_enlarge"></div>
-      <div id="close" class="icon" @click="quit" v-html="quitIcon"></div>
+      <div id="minimize" class="icon" @click="minimize"><minimize-icon></minimize-icon></div>
+      <div v-if="isMaximized" id="maximize" class="icon" @click="maximize"><maximize-icon_shrink></maximize-icon_shrink></div>
+      <div v-else id="maximize" class="icon" @click="maximize"><maximize-icon_enlarge></maximize-icon_enlarge></div>
+      <div id="close" class="icon" @click="quit"><quit-icon></quit-icon></div>
     </div>
   </div>
 </template>
@@ -42,44 +42,46 @@
   }
 </style>
 <script>
-  import { ipcRenderer, remote } from 'electron'
-  import maximizeIcon_enlarge from '../../static/icons/SVG/enlarge.svg'
-  import maximizeIcon_shrink from '../../static/icons/SVG/shrink.svg'
-  import minimizeIcon from '../../static/icons/SVG/minus.svg'
-  import quitIcon from '../../static/icons/SVG/cross.svg'
+import { ipcRenderer, remote } from 'electron'
+import maximizeIcon_enlarge from '../../static/icons/SVG/enlarge.svg?inline'
+import maximizeIcon_shrink from '../../static/icons/SVG/shrink.svg?inline'
+import minimizeIcon from '../../static/icons/SVG/minus.svg?inline'
+import quitIcon from '../../static/icons/SVG/cross.svg?inline'
 
-  export default {
-    data () {
-      return {
-        maximizeIcon_enlarge,
-        maximizeIcon_shrink,
-        minimizeIcon,
-        quitIcon,
-        isMaximized: remote.getCurrentWindow().isMaximizable(),
+export default {
+  data () {
+    return {
+      isMaximized: remote.getCurrentWindow().isMaximizable()
+    }
+  },
+  methods: {
+    minimize () {
+      var window = remote.getCurrentWindow()
+      window.minimize()
+    },
+    maximize () {
+      var window = remote.getCurrentWindow()
+      if (!window.isMaximized()) {
+        window.maximize()
+      } else {
+        window.unmaximize()
       }
     },
-    methods: {
-      minimize () {
-        var window = remote.getCurrentWindow()
-        window.minimize()
-      },
-      maximize () {
-        var window = remote.getCurrentWindow()
-        if (!window.isMaximized()) {
-          window.maximize()
-        } else {
-          window.unmaximize()
-        }
-      },
-      quit () {
-        var window = remote.getCurrentWindow()
-        window.close()
-      },
-    },
-    async mounted () {
-      ipcRenderer.on('maximized', (event, maximizedState) => {
-        this.isMaximized = maximizedState
-      })
+    quit () {
+      var window = remote.getCurrentWindow()
+      window.close()
     }
+  },
+  async mounted () {
+    ipcRenderer.on('maximized', (event, maximizedState) => {
+      this.isMaximized = maximizedState
+    })
+  },
+  components: {
+    maximizeIcon_enlarge,
+    maximizeIcon_shrink,
+    minimizeIcon,
+    quitIcon
   }
+}
 </script>

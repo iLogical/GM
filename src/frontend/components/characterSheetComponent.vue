@@ -2,11 +2,11 @@
   <div id="character-component">
     <h2>
       <div id="character-component-title">
-        <div v-html="quillIcon"></div>
+        <div><quill-icon></quill-icon></div>
         <div>{{currentCharacter.name}}</div>
       </div>
         <div id="character-component-delete" @click="deleteCharacter">
-          <div v-html="removeIcon"></div>
+          <div><remove-icon></remove-icon></div>
         </div>
     </h2>
     <div id="character-component-grid">
@@ -64,42 +64,36 @@
 }
 </style>
 <script>
-import removeIcon from "../../static/icons/SVG/cross.svg";
-import quillIcon from "../../static/icons/SVG/quill.svg";
-import Vuex from "vuex";
-import CharacterSheetSection from "./characterSheet/section.vue";
-import NameComponent from "./characterSheet/name.vue";
-import AbilityComponent from "./characterSheet/ability.vue";
-import RacialTraitsComponent from "./characterSheet/racialTraits.vue";
-import SkillsComponent from "./characterSheet/skills.vue";
-import ArmorAndWeaponProficienciesComponent from "./characterSheet/armorAndWeaponProficiencies.vue";
-import ClassFeaturesComponent from "./characterSheet/classFeatures.vue";
-import WeaponsAndAttacksComponent from "./characterSheet/weaponsAndAttacks.vue";
-import ArmorAndArmorClassComponent from "./characterSheet/armorAndArmorClass.vue";
-import FeatsComponent from "./characterSheet/feats.vue";
-import EquipmentComponent from "./characterSheet/equipment.vue";
-import SpellsComponent from "./characterSheet/spells.vue";
+import removeIcon from '../../static/icons/SVG/cross.svg?inline'
+import quillIcon from '../../static/icons/SVG/quill.svg?inline'
+import Vuex from 'vuex'
+import CharacterSheetSection from './characterSheet/section.vue'
+import NameComponent from './characterSheet/name.vue'
+import AbilityComponent from './characterSheet/ability.vue'
+import RacialTraitsComponent from './characterSheet/racialTraits.vue'
+import SkillsComponent from './characterSheet/skills.vue'
+import ArmorAndWeaponProficienciesComponent from './characterSheet/armorAndWeaponProficiencies.vue'
+import ClassFeaturesComponent from './characterSheet/classFeatures.vue'
+import WeaponsAndAttacksComponent from './characterSheet/weaponsAndAttacks.vue'
+import ArmorAndArmorClassComponent from './characterSheet/armorAndArmorClass.vue'
+import FeatsComponent from './characterSheet/feats.vue'
+import EquipmentComponent from './characterSheet/equipment.vue'
+import SpellsComponent from './characterSheet/spells.vue'
 
 export default {
-  data() {
-    return {
-      quillIcon,
-      removeIcon
-    };
-  },
   methods: {
-    deleteCharacter() {
+    deleteCharacter () {
       this.removeCharacter(this.currentCharacter)
-      this.changeCurrentScreen("characters")
+      this.changeCurrentScreen('characters')
     },
-    ...Vuex.mapActions(["changeCurrentScreen"]),
-    ...Vuex.mapActions("CharacterModule", ["removeCharacter"])
+    ...Vuex.mapActions(['changeCurrentScreen']),
+    ...Vuex.mapActions('CharacterModule', ['removeCharacter'])
   },
   computed: {
     ...Vuex.mapGetters([
-      "currentCharacter",
-      "currentCharacterClass",
-      "currentCharacterRace"
+      'currentCharacter',
+      'currentCharacterClass',
+      'currentCharacterRace'
     ])
   },
   components: {
@@ -114,7 +108,9 @@ export default {
     ArmorAndArmorClassComponent,
     FeatsComponent,
     EquipmentComponent,
-    SpellsComponent
+    SpellsComponent,
+    quillIcon,
+    removeIcon
   }
-};
+}
 </script>

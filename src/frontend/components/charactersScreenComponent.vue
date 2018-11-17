@@ -3,7 +3,8 @@
     <div class="character-card" v-for="character in characters" :key="'character_'+character.id">
       <character-card-component :character="character"></character-card-component>
     </div>
-    <div id="add" class="character-card" @click="createCharacter" v-html="addIcon">
+    <div id="add" class="character-card" @click="createCharacter">
+      <add-icon></add-icon>
     </div>
   </div>
 </template>
@@ -47,28 +48,24 @@
   }
 </style>
 <script>
-  import Vuex from 'vuex'
-  import CharacterCardComponent from './charactersScreen/characterCardComponent.vue'
-  import addIcon from '../../static/icons/SVG/user-plus.svg'
+import Vuex from 'vuex'
+import CharacterCardComponent from './charactersScreen/characterCardComponent.vue'
+import addIcon from '../../static/icons/SVG/user-plus.svg?inline'
 
-  export default {
-    data () {
-      return {
-        addIcon
-      }
-    },
-    computed: {
-      ...Vuex.mapState('CharacterModule', ['characters'])
-    },
-    methods: {
-      ...Vuex.mapActions(['changeCurrentCharacter']),
-      ...Vuex.mapActions('CharacterModule', ['createCharacter'])
-    },
-    mounted () {
-      this.changeCurrentCharacter()
-    },
-    components: {
-      CharacterCardComponent
-    }
+export default {
+  computed: {
+    ...Vuex.mapState('CharacterModule', ['characters'])
+  },
+  methods: {
+    ...Vuex.mapActions(['changeCurrentCharacter']),
+    ...Vuex.mapActions('CharacterModule', ['createCharacter'])
+  },
+  mounted () {
+    this.changeCurrentCharacter()
+  },
+  components: {
+    CharacterCardComponent,
+    addIcon
   }
+}
 </script>

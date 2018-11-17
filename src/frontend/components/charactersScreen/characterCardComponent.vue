@@ -4,7 +4,7 @@
       <div id="characterId">
         {{character.id}}
       </div>
-      <div id="remove" @click.stop="onRemoveClicked" v-html="removeIcon"></div>
+      <div id="remove" @click.stop="onRemoveClicked"><remove-icon></remove-icon></div>
     </div>
     <br>
     <br>
@@ -54,45 +54,47 @@
   }
 </style>
 <script>
-  import Vuex from 'vuex'
-  import classes from '../../../static/classes.json'
-  import races from '../../../static/races.json'
-  import removeIcon from '../../../static/icons/SVG/cross.svg'
+import Vuex from 'vuex'
+import classes from '../../../static/classes.json'
+import races from '../../../static/races.json'
+import removeIcon from '../../../static/icons/SVG/cross.svg?inline'
 
-  export default {
-    props: {
-      character: {
-        type: Object,
-        required: true
-      }
-    },
-    data () {
-      return {
-        classes,
-        races,
-        removeIcon
-      }
-    },
-    computed: {
-      className () {
-        const c =  this.classes[this.character.class]
-        return c ? c.name : ''
-      },
-      raceName () {
-        const r = this.races[this.character.race]
-        return r ? r.name : ''
-      }
-    },
-    methods: {
-      onCardClicked () {
-        this.changeCurrentCharacter(this.character)
-        this.changeCurrentScreen('character')
-      },
-      onRemoveClicked () {
-        this.removeCharacter(this.character)
-      },
-      ...Vuex.mapActions(['changeCurrentScreen', 'changeCurrentCharacter']),
-      ...Vuex.mapActions('CharacterModule', ['removeCharacter'])
+export default {
+  props: {
+    character: {
+      type: Object,
+      required: true
     }
+  },
+  data () {
+    return {
+      classes,
+      races
+    }
+  },
+  computed: {
+    className () {
+      const c = this.classes[this.character.class]
+      return c ? c.name : ''
+    },
+    raceName () {
+      const r = this.races[this.character.race]
+      return r ? r.name : ''
+    }
+  },
+  methods: {
+    onCardClicked () {
+      this.changeCurrentCharacter(this.character)
+      this.changeCurrentScreen('character')
+    },
+    onRemoveClicked () {
+      this.removeCharacter(this.character)
+    },
+    ...Vuex.mapActions(['changeCurrentScreen', 'changeCurrentCharacter']),
+    ...Vuex.mapActions('CharacterModule', ['removeCharacter'])
+  },
+  components: {
+    removeIcon
   }
+}
 </script>

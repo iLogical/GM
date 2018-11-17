@@ -9,14 +9,14 @@
   }
 </style>
 <script>
-  import Vuex from 'vuex'
+import Vuex from 'vuex'
 
-  export default {
-    methods: {
-      ...Vuex.mapActions(['changeCurrentCharacter'])
-    },
-    mounted () {
-      this.changeCurrentCharacter()
-    }
+export default {
+  methods: {
+    ...Vuex.mapActions(['changeCurrentCharacter'])
+  },
+  mounted () {
+    this.changeCurrentCharacter()
   }
+}
 </script>

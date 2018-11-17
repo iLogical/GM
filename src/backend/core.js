@@ -1,74 +1,58 @@
-import { app, BrowserWindow, Tray, Menu } from 'electron'
-import vueDevtools from 'vue-devtools'
-import electronDebug from 'electron-debug'
-import path from 'path'
-import url from 'url'
+'use strict'
+
+import { app, protocol, BrowserWindow, Menu } from 'electron'
 import electronLocalshortcut from 'electron-localshortcut'
+import {
+  createProtocol,
+  installVueDevtools
+} from 'vue-cli-plugin-electron-builder/lib'
 
-export let mainWindow
+const isDevelopment = process.env.NODE_ENV !== 'production'
 
+let win
+protocol.registerStandardSchemes(['app'], { secure: true })
 function createWindow () {
-
-  mainWindow = new BrowserWindow({
-    frame: false,
-    webPreferences: {
-      nodeIntegrationInWorker: true
-    }
+  win = new BrowserWindow({
+    width: 800,
+    height: 600,
+    frame: false
   })
-  mainWindow.loadURL(url.format({ pathname: path.join(__dirname, 'index.html') }))
 
-  mainWindow.on('closed', () => {
-    mainWindow = null
+  if (isDevelopment || process.env.IS_TEST) {
+    win.loadURL(process.env.WEBPACK_DEV_SERVER_URL)
+    // if (!process.env.IS_TEST) win.webContents.openDevTools()
+  } else {
+    createProtocol('app')
+    win.loadURL('app://./index.html')
+  }
+
+  win.on('closed', () => {
+    win = null
   })
-  const contextMenu = Menu.buildFromTemplate([
-      {
-          label: 'Show App', click: function () {
-            mainWindow.show();
-          }
-      },
-      {
-          label: 'Quit', click: function () {
-              app.isQuiting = true;
-              app.quit();
-
-          }
-      }
-  ])
-  // const appIcon = new Tray(path.join(__dirname, 'd20.png'));
-  // appIcon.setContextMenu(contextMenu)
-  mainWindow.maximize()
+  win.maximize()
   Menu.setApplicationMenu(null)
 
-  electronLocalshortcut.register(mainWindow, 'CmdOrCtrl+Shift+I', () => {
-    mainWindow.webContents.openDevTools()
+  electronLocalshortcut.register(win, 'CmdOrCtrl+Shift+I', () => {
+    win.webContents.openDevTools()
   })
 
-  electronLocalshortcut.register(mainWindow, 'CmdOrCtrl+R', () => {
-    mainWindow.reload()
+  electronLocalshortcut.register(win, 'CmdOrCtrl+R', () => {
+    win.reload()
   })
 
-  electronLocalshortcut.register(mainWindow, 'CmdOrCtrl+E', () => {
-    mainWindow.webContents.send('alfred', {})
+  electronLocalshortcut.register(win, 'CmdOrCtrl+E', () => {
+    win.webContents.send('alfred', {})
   })
 
-  mainWindow.on('maximize', () => {
-    mainWindow.webContents.send('maximized', true)
+  win.on('maximize', () => {
+    win.webContents.send('maximized', true)
   })
 
-  mainWindow.on('unmaximize', () => {
-    mainWindow.webContents.send('maximized', false)
+  win.on('unmaximize', () => {
+    win.webContents.send('maximized', false)
   })
 }
-
 export function init () {
-  app.on('ready', () => {
-    if (process.env.NODE_ENV !== 'production') {
-      vueDevtools.install()
-      electronDebug({showDevTools: false})
-    }
-    createWindow()
-  })
-
   app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
       app.quit()
@@ -76,8 +60,29 @@ export function init () {
   })
 
   app.on('activate', () => {
-    if (mainWindow === null) {
+    if (win === null) {
       createWindow()
     }
   })
-};
+
+  app.on('ready', async () => {
+    if (isDevelopment && !process.env.IS_TEST) {
+      await installVueDevtools()
+    }
+    createWindow()
+  })
+
+  if (isDevelopment) {
+    if (process.platform === 'win32') {
+      process.on('message', data => {
+        if (data === 'graceful-exit') {
+          app.quit()
+        }
+      })
+    } else {
+      process.on('SIGTERM', () => {
+        app.quit()
+      })
+    }
+  }
+}

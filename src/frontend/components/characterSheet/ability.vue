@@ -98,64 +98,64 @@
   }
 </style>
 <script>
-  import Vuex from 'vuex'
-  import modifierHelper from '../../helpers/modifiers.js'
+import Vuex from 'vuex'
+import modifierHelper from '../../helpers/modifiers.js'
 
-  export default {
-    data () {
-      return {
-        expanded: true
-      }
-    },
-    props: {
-      character: {
-        type: Object,
-        required: true
-      }
-    },
-    computed: {
-      strengthModifier () {
-        return modifierHelper.calculateModifier(this.character.abilities.strength)
-      },
-      dexterityModifier () {
-        return modifierHelper.calculateModifier(this.character.abilities.dexterity)
-      },
-      constitutionModifier () {
-        return modifierHelper.calculateModifier(this.character.abilities.constitution)
-      },
-      intelligenceModifier () {
-        return modifierHelper.calculateModifier(this.character.abilities.intelligence)
-      },
-      wisdomModifier () {
-        return modifierHelper.calculateModifier(this.character.abilities.wisdom)
-      },
-      charismaModifier () {
-        return modifierHelper.calculateModifier(this.character.abilities.charisma)
-      }
-    },
-    methods: {
-      toggleExpanded () {
-        this.expanded = !this.expanded
-      },
-      onStrengthChange (e) {
-        this.updateCharacterAbilities({character: this.character, changeDelta: {strength: e.target.value}})
-      },
-      onDexterityChange (e) {
-        this.updateCharacterAbilities({character: this.character, changeDelta: {dexterity: e.target.value}})
-      },
-      onConstitutionChange (e) {
-        this.updateCharacterAbilities({character: this.character, changeDelta: {constitution: e.target.value}})
-      },
-      onIntelligenceChange (e) {
-        this.updateCharacterAbilities({character: this.character, changeDelta: {intelligence: e.target.value}})
-      },
-      onWisdomChange (e) {
-        this.updateCharacterAbilities({character: this.character, changeDelta: {wisdom: e.target.value}})
-      },
-      onCharismaChange (e) {
-        this.updateCharacterAbilities({character: this.character, changeDelta: {charisma: e.target.value}})
-      },
-      ...Vuex.mapActions('CharacterModule', ['updateCharacterAbilities'])
+export default {
+  data () {
+    return {
+      expanded: true
     }
+  },
+  props: {
+    character: {
+      type: Object,
+      required: true
+    }
+  },
+  computed: {
+    strengthModifier () {
+      return modifierHelper.calculateModifier(this.character.abilities.strength)
+    },
+    dexterityModifier () {
+      return modifierHelper.calculateModifier(this.character.abilities.dexterity)
+    },
+    constitutionModifier () {
+      return modifierHelper.calculateModifier(this.character.abilities.constitution)
+    },
+    intelligenceModifier () {
+      return modifierHelper.calculateModifier(this.character.abilities.intelligence)
+    },
+    wisdomModifier () {
+      return modifierHelper.calculateModifier(this.character.abilities.wisdom)
+    },
+    charismaModifier () {
+      return modifierHelper.calculateModifier(this.character.abilities.charisma)
+    }
+  },
+  methods: {
+    toggleExpanded () {
+      this.expanded = !this.expanded
+    },
+    onStrengthChange (e) {
+      this.updateCharacterAbilities({ character: this.character, changeDelta: { strength: e.target.value } })
+    },
+    onDexterityChange (e) {
+      this.updateCharacterAbilities({ character: this.character, changeDelta: { dexterity: e.target.value } })
+    },
+    onConstitutionChange (e) {
+      this.updateCharacterAbilities({ character: this.character, changeDelta: { constitution: e.target.value } })
+    },
+    onIntelligenceChange (e) {
+      this.updateCharacterAbilities({ character: this.character, changeDelta: { intelligence: e.target.value } })
+    },
+    onWisdomChange (e) {
+      this.updateCharacterAbilities({ character: this.character, changeDelta: { wisdom: e.target.value } })
+    },
+    onCharismaChange (e) {
+      this.updateCharacterAbilities({ character: this.character, changeDelta: { charisma: e.target.value } })
+    },
+    ...Vuex.mapActions('CharacterModule', ['updateCharacterAbilities'])
   }
+}
 </script>
